@@ -63,6 +63,10 @@ h3{font-size:1.5rem}
 .site-header.scrolled::before{opacity:1}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand img{height:46px;width:auto;background:#fff;padding:5px 10px;border-radius:12px}
+.brand.company-name{font:800 1.35rem/1.2 "Manrope",sans-serif;letter-spacing:-.035em;color:#fff;white-space:nowrap;display:inline-flex;align-items:center}
+.brand.company-name::first-letter{color:var(--saffron)}
+.footer-company-name{font:800 1.5rem/1.2 "Manrope",sans-serif;letter-spacing:-.035em;color:#fff;display:inline-flex;margin-bottom:16px}
+.footer-company-name::first-letter{color:var(--saffron)}
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{color:rgba(255,255,255,.82);font-weight:600;font-size:.92rem;position:relative}
 .nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--saffron);transition:.3s}
@@ -412,7 +416,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   <div class="progress"><span id="progressBar"></span></div>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="Quorista Overseas home"><img src="../assets/quorista-logo.png" alt="Quorista Overseas"></a>
+      <a class="brand company-name" href="index.html" aria-label="Quorista Overseas home">Quorista Overseas</a>
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html#destinations">Destinations</a>
@@ -562,7 +566,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   <footer>
     <div class="container">
       <div class="footer-top">
-        <div><img src="../assets/quorista-logo.png" alt="Quorista Overseas"><p>Your Journey. Your Future. Beyond Borders.</p></div>
+        <div><a class="company-name footer-company-name" href="index.html" aria-label="Quorista Overseas home">Quorista Overseas</a><p>Your Journey. Your Future. Beyond Borders.</p></div>
         <div><h4>EXPLORE</h4><ul><li><a href="index.html#destinations">Destinations</a></li><li><a href="index.html#study">Study Abroad</a></li><li><a href="index.html#travel">Tourism</a></li><li><a href="index.html#services">Services</a></li></ul></div>
         <div><h4>CONNECT</h4><ul><li><a href="https://wa.me/916395672828" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:quoristaoverseas@gmail.com">Email</a></li><li><a href="https://instagram.com/quoristaoverseas" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
