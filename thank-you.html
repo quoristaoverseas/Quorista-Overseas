@@ -46,5 +46,19 @@
     </div>
     <p class="foot">QUORISTA OVERSEAS · YOUR JOURNEY. YOUR FUTURE. BEYOND BORDERS.</p>
   </main>
+
+  <script>
+    // Keep one branded confirmation page while tailoring the copy to the submitted form.
+    if (new URLSearchParams(window.location.search).get('type') === 'career') {
+      document.title = 'Application Received | Quorista Overseas';
+      document.querySelector('.eyebrow').textContent = 'APPLICATION SUBMITTED';
+      document.querySelector('h1').innerHTML = 'Thank you for<br><span>applying to Quorista.</span>';
+      document.querySelector('.message').textContent = 'Your career application has been submitted to Quorista Overseas. Thank you for your interest in joining our team.';
+      document.querySelector('.next').textContent = 'Our team will review your application and contact you using the details you provided.';
+      const homeButton = document.querySelector('.actions .primary');
+      homeButton.href = 'careers.html';
+      homeButton.innerHTML = 'Back to careers <span aria-hidden="true">&nbsp;→</span>';
+    }
+  </script>
 </body>
 </html>
