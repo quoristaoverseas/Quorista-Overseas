@@ -343,6 +343,17 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 .badge.teal{background:#dcf8f3;color:#0a7566}
 .panel-note{padding:18px 22px;border-radius:16px;background:#dcf8f3;color:#0a5f53;font-size:.92rem;font-weight:600}
 .panel-note.warm{background:#fff0ec;color:#8f2a1a}
+.internship-benefits{margin:18px 0 22px;padding:24px;border-radius:24px;background:radial-gradient(circle at 100% 0%,rgba(255,176,32,.2),transparent 38%),linear-gradient(145deg,#10065c,#211078);color:#fff;box-shadow:0 18px 40px -24px rgba(16,6,92,.6)}
+.benefits-kicker{font:800 .68rem 'Manrope';letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:8px}
+.internship-benefits h3{font-size:1.45rem;margin-bottom:8px}
+.benefits-intro{font-size:.9rem;color:rgba(255,255,255,.76);margin-bottom:18px}
+.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.benefit-card{padding:18px 16px;border-radius:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);transition:transform .25s,border-color .25s}
+.benefit-card:hover{transform:translateY(-4px);border-color:var(--saffron)}
+.benefit-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--saffron);color:var(--ink);font-size:1.3rem;margin-bottom:13px}
+.benefit-card h4{font:800 1rem 'Manrope';margin-bottom:7px;color:#fff}
+.benefit-card p{font-size:.82rem;line-height:1.55;color:rgba(255,255,255,.76)}
+.benefit-condition{margin-top:14px;font-size:.76rem;line-height:1.55;color:rgba(255,255,255,.66)}
 .perks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .perks span{background:var(--mist);color:var(--indigo);font-size:.8rem;font-weight:700;padding:7px 13px;border-radius:999px}
 .career-form{border:1px solid var(--line)}
@@ -403,6 +414,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   .hero-badge{width:104px;height:104px;font-size:.66rem}
   .form-shell{padding:24px 20px}
   .career-tab{min-width:100%}
+  .benefit-grid{grid-template-columns:1fr}
+  .internship-benefits{padding:20px}
   .marquee-track{font-size:.9rem}
   .uni-stat b{font-size:3.6rem}
   .footer-bottom nav{gap:16px}
@@ -484,8 +497,25 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
         <!-- INTERNSHIP -->
         <div class="career-panel" id="internship" role="tabpanel">
           <div>
-            <p class="panel-note warm" style="margin-bottom:16px">🌱 Please note: these internships are <b>unpaid and learning-oriented</b>. They are designed to give you practical exposure, mentoring and experience — not a salary.</p>
-            <p class="panel-note" style="margin-bottom:16px">🎓 Upon successful conclusion of the internship, an internship experience certificate and a Letter of Recommendation (LOR) will be provided, provided you meet the internship requirements and conditions.</p>
+            <p class="panel-note warm" style="margin-bottom:16px">🌱 <b>Unpaid · Learning-oriented</b> — gain practical exposure, build skills and explore how the international education and travel space works. This opportunity does not include a salary.</p>
+            <section class="internship-benefits" aria-labelledby="internship-benefits-title">
+              <p class="benefits-kicker">Your effort. Your next step.</p>
+              <h3 id="internship-benefits-title">Make your internship count.</h3>
+              <p class="benefits-intro">Build experience you can carry forward, with recognition for successfully completing the programme.</p>
+              <div class="benefit-grid">
+                <article class="benefit-card">
+                  <span class="benefit-icon" aria-hidden="true">🎓</span>
+                  <h4>Internship Experience Certificate</h4>
+                  <p>A formal record of your internship experience to add to your CV and professional portfolio.</p>
+                </article>
+                <article class="benefit-card">
+                  <span class="benefit-icon" aria-hidden="true">✦</span>
+                  <h4>Letter of Recommendation</h4>
+                  <p>A recommendation recognising your contribution and performance, subject to successful completion and eligibility.</p>
+                </article>
+              </div>
+              <p class="benefit-condition">Both benefits are provided upon successful conclusion of the internship, subject to meeting Quorista Overseas’ internship requirements and conditions.</p>
+            </section>
             <div class="role-list">
               <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Education Counselling Intern</h4><p>Learn how study-abroad guidance works — destinations, universities, scholarships and student queries.</p></div>
               <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Travel &amp; Visa Documentation Intern</h4><p>Understand tourist visa processes and documentation workflows alongside the team.</p></div>
