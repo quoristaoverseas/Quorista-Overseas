@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <?!= include('Styles'); ?>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="https://quoristaoverseas.in/assets/quorista-logo.png" alt="Quorista Overseas">
+        <div><strong>Quorista Overseas</strong><span>People Operations</span></div>
+      </div>
+      <div class="nav-label">WORKSPACE</div>
+      <button class="nav-item active" type="button"><span>▦</span> Applications</button>
+      <div class="sidebar-note">
+        <span class="secure-dot"></span>
+        <div><strong>Private HR workspace</strong><small>Admin access only</small></div>
+      </div>
+      <div class="sidebar-footer">Phase 1 · Recruitment management</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">PEOPLE OPERATIONS</div>
+          <h1>Recruitment dashboard</h1>
+          <p class="subtitle">Review applications, manage recruitment stages, and schedule interviews.</p>
+        </div>
+        <button class="button button-secondary" id="refreshButton" type="button">↻ Refresh</button>
+      </header>
+
+      <div id="notice" class="notice hidden" role="status"></div>
+      <div id="loading" class="loading"><span class="spinner"></span> Loading application records…</div>
+
+      <section id="dashboard" class="hidden">
+        <div class="stats-grid" id="stats"></div>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div><h2>Applications</h2><p>Candidate information from your existing Career Applications sheet.</p></div>
+            <span id="recordCount" class="count-pill">0 records</span>
+          </div>
+          <div class="toolbar">
+            <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name, email, role or ID…"></label>
+            <select id="statusFilter" aria-label="Filter by recruitment status">
+              <option value="">All statuses</option>
+            </select>
+            <select id="typeFilter" aria-label="Filter by application type">
+              <option value="">All application types</option>
+              <option value="intern">Internship</option>
+              <option value="full">Full-time</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Candidate</th><th>Role / area</th><th>Type</th><th>Received</th><th>Status</th><th>Candidate ID</th><th>Actions</th></tr></thead>
+              <tbody id="candidateRows"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state hidden"><div class="empty-icon">⌕</div><strong>No applications found</strong><p>Try changing your search or filter.</p></div>
+          </div>
+          <div class="table-footer"><span>Showing up to 500 most recent applications</span><span>Records remain in Google Sheets</span></div>
+        </section>
+      </section>
+      <footer class="page-footer">Quorista Overseas · Confidential recruitment information</footer>
+    </main>
+  </div>
+
+  <div id="candidateModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="candidateModalTitle">
+    <div class="modal-card modal-wide">
+      <div class="modal-header"><div><div class="eyebrow">CANDIDATE RECORD</div><h2 id="candidateModalTitle">Candidate details</h2></div><button class="icon-button" data-close="candidateModal" aria-label="Close">×</button></div>
+      <div id="candidateDetails" class="candidate-details"></div>
+      <div class="form-grid">
+        <label>Recruitment status<select id="editStatus"></select></label>
+        <label class="full-width">Internal HR notes<textarea id="editNotes" rows="3" placeholder="Interview feedback, follow-up reminders, internal notes…"></textarea></label>
+      </div>
+      <div id="generatedIdNotice" class="id-notice hidden"></div>
+      <div class="modal-actions"><button class="button button-secondary" data-close="candidateModal" type="button">Cancel</button><button class="button button-primary" id="saveCandidateButton" type="button">Save changes</button></div>
+    </div>
+  </div>
+
+  <div id="interviewModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="interviewModalTitle">
+    <div class="modal-card">
+      <div class="modal-header"><div><div class="eyebrow">INTERVIEW PLANNER</div><h2 id="interviewModalTitle">Schedule interview</h2><p id="interviewCandidateLabel" class="subtitle"></p></div><button class="icon-button" data-close="interviewModal" aria-label="Close">×</button></div>
+      <div class="info-callout">Create your Google Meet link first, then paste it below. The interview will be added to your Google Calendar and a calendar invitation will be sent to the candidate.</div>
+      <form id="interviewForm">
+        <label>Date and time (India Standard Time)<input id="interviewDateTime" type="datetime-local" required></label>
+        <label>Duration<select id="interviewDuration"><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option></select></label>
+        <label>Google Meet URL<input id="meetUrl" type="url" placeholder="https://meet.google.com/xxx-xxxx-xxx" required></label>
+        <div class="modal-actions"><button class="button button-secondary" data-close="interviewModal" type="button">Cancel</button><button class="button button-primary" id="scheduleButton" type="submit">Create interview & send invite</button></div>
+      </form>
+    </div>
+  </div>
+
+  <?!= include('Client'); ?>
+</body>
+</html>
