@@ -457,9 +457,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           </div>
           <div class="form-shell career-form">
             <div class="form-top"><span>APPLY · FULL-TIME</span><small>CAREERS</small></div>
-            <form class="ajax-form" action="https://formsubmit.co/ajax/quoristaoverseas@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Full-time Application — Quorista Overseas">
-              <input type="hidden" name="_template" value="table"><input type="hidden" name="_url"><input type="hidden" name="_replyto">
+            <form class="ajax-form career-application-form" action="https://script.google.com/macros/s/AKfycbxsflv_xKoHIAYFlYLhQ6TAh6Ib-BHf1vNB6ZEuGBHI90gf8JY6yVsRlK8XHmSYzWlH/exec" method="POST">
+              <input type="hidden" name="submission_type" value="career">
               <input type="hidden" name="application_type" value="Full-time">
               <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
               <div class="form-grid">
@@ -491,9 +490,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           </div>
           <div class="form-shell career-form">
             <div class="form-top"><span>APPLY · PART-TIME</span><small>CAREERS</small></div>
-            <form class="ajax-form" action="https://formsubmit.co/ajax/quoristaoverseas@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Part-time Application — Quorista Overseas">
-              <input type="hidden" name="_template" value="table"><input type="hidden" name="_url"><input type="hidden" name="_replyto">
+            <form class="ajax-form career-application-form" action="https://script.google.com/macros/s/AKfycbxsflv_xKoHIAYFlYLhQ6TAh6Ib-BHf1vNB6ZEuGBHI90gf8JY6yVsRlK8XHmSYzWlH/exec" method="POST">
+              <input type="hidden" name="submission_type" value="career">
               <input type="hidden" name="application_type" value="Part-time">
               <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
               <div class="form-grid">
@@ -526,9 +524,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           </div>
           <div class="form-shell career-form">
             <div class="form-top"><span>APPLY · INTERNSHIP</span><small>LEARNING-ORIENTED</small></div>
-            <form class="ajax-form" action="https://formsubmit.co/ajax/quoristaoverseas@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Internship Application (Unpaid) — Quorista Overseas">
-              <input type="hidden" name="_template" value="table"><input type="hidden" name="_url"><input type="hidden" name="_replyto">
+            <form class="ajax-form career-application-form" action="https://script.google.com/macros/s/AKfycbxsflv_xKoHIAYFlYLhQ6TAh6Ib-BHf1vNB6ZEuGBHI90gf8JY6yVsRlK8XHmSYzWlH/exec" method="POST">
+              <input type="hidden" name="submission_type" value="career">
               <input type="hidden" name="application_type" value="Internship (unpaid, learning-oriented)">
               <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
               <div class="form-grid">
@@ -576,6 +573,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     </div>
   </footer>
   <a class="whatsapp-float" href="https://wa.me/916395672828" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span class="wa-icon">◔</span><span>WhatsApp</span></a>
+  <iframe id="sheetsSubmissionFrame" name="sheetsSubmissionFrame" title="Career application submission" hidden></iframe>
+
   <script>
 /* Quorista Overseas — site behaviour (shared by every page) */
 (function () {
@@ -702,13 +701,18 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
       if (em && rt) rt.value = em.value;
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
       try {
-        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-        if (!res.ok) throw new Error('bad status');
-        form.reset(); status.classList.add('ok');
-        status.textContent = 'Thank you! We have received your submission and will get back to you soon.';
+        // Submit career applications directly to the same Apps Script web app as enquiries.
+        const frame = $('#sheetsSubmissionFrame');
+        if (!frame) throw new Error('Submission frame is missing.');
+        frame.addEventListener('load', () => {
+          window.location.href = 'thank-you.html?type=career';
+        }, { once: true });
+        form.target = frame.name;
+        form.submit();
       } catch (err) {
+        console.error('Career application submission failed:', err);
         status.classList.add('err');
-        status.textContent = 'Something went wrong. Please try again or message us on WhatsApp.';
+        status.textContent = 'We could not send your application right now. Please try again or contact us on WhatsApp.';
       } finally { btn.disabled = false; }
     });
   });
