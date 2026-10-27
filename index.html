@@ -682,6 +682,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
             <button class="submit-btn" type="submit">Send enquiry <span>→</span></button>
             <div id="formStatus" class="form-status" role="status"></div>
           </form>
+          <iframe id="sheetsSubmissionFrame" name="sheetsSubmissionFrame" title="Enquiry submission" hidden></iframe>
         </div>
       </div>
     </section>
@@ -844,18 +845,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
       const isLeadForm = form.id === 'leadForm';
       try {
         if (isLeadForm) {
-          // Homepage enquiries go directly to the Google Apps Script endpoint.
-          // no-cors avoids a preflight, but its opaque response cannot confirm
-          // that the script successfully appended a row to the spreadsheet.
-          await fetch(GOOGLE_SHEETS_ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: new URLSearchParams(new FormData(form))
-          });
-          // Send the visitor to a dedicated confirmation page after the Sheets request completes.
-          // Note: no-cors returns an opaque response, so this confirms the request was sent,
-          // not that Apps Script independently verified the row was appended.
-          window.location.href = 'thank-you.html';
+          // Use a native form POST to the Apps Script web app in a hidden iframe.
+          // This sends standard form fields to doPost(e) without a cross-origin fetch.
+          const frame = $('#sheetsSubmissionFrame');
+          if (!frame) throw new Error('Submission frame is missing.');
+          frame.addEventListener('load', () => {
+            window.location.href = 'thank-you.html';
+          }, { once: true });
+          form.target = frame.name;
+          form.submit();
           return;
         } else {
           // Preserve the existing FormSubmit workflow for non-enquiry forms.
