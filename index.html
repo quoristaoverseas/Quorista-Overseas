@@ -832,7 +832,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   /* ---------- forms (enquiry + careers) ---------- */
   const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxsflv_xKoHIAYFlYLhQ6TAh6Ib-BHf1vNB6ZEuGBHI90gf8JY6yVsRlK8XHmSYzWlH/exec';
 
-  $('form.ajax-form').forEach(form => {
+  $$('form.ajax-form').forEach(form => {
     const status = $('.form-status', form), btn = $('button[type=submit]', form);
     const u = $('[name=_url]', form); if (u) u.value = location.href;
     form.addEventListener('submit', async e => {
