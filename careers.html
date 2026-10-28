@@ -67,6 +67,8 @@ h3{font-size:1.5rem}
 .brand.company-name::first-letter{color:var(--saffron)}
 .footer-company-name{font:800 1.5rem/1.2 "Manrope",sans-serif;letter-spacing:-.035em;color:#fff;display:inline-flex;margin-bottom:16px}
 .footer-company-name::first-letter{color:var(--saffron)}
+.footer-logo-link{display:inline-flex;align-items:center;margin-bottom:16px}
+.footer-logo{height:48px;width:auto;max-width:220px;object-fit:contain;filter:brightness(0) invert(1);background:transparent!important;padding:0!important;border-radius:0!important;margin:0 0 16px!important}
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{color:rgba(255,255,255,.82);font-weight:600;font-size:.92rem;position:relative}
 .nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--saffron);transition:.3s}
@@ -465,9 +467,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
         <div class="career-panel active" id="full-time" role="tabpanel">
           <div>
             <div class="role-list">
-              <div class="role"><span class="badge">FULL-TIME</span><h4>Education Counsellor</h4><p>Guide students on destinations, universities, courses and scholarships through 1:1 consultations.</p></div>
-              <div class="role"><span class="badge">FULL-TIME</span><h4>Visa &amp; Documentation Executive</h4><p>Help prepare and organize application and visa documentation with accuracy and care.</p></div>
-              <div class="role"><span class="badge">FULL-TIME</span><h4>Digital Marketing &amp; Content Executive</h4><p>Create engaging content and campaigns that tell the Quorista story across channels.</p></div>
+              <div class="role"><span class="badge">FULL-TIME</span><h4>Education Counsellor</h4><p>Guide prospective students through study-abroad destinations, course options, universities and application requirements.</p></div>
+              <div class="role"><span class="badge">FULL-TIME</span><h4>Social Media Executive</h4><p>Plan and publish engaging social content, support campaigns, and help grow Quorista Overseas’ online presence.</p></div>
+              <div class="role"><span class="badge">FULL-TIME</span><h4>Head of Operations</h4><p>Coordinate daily operations, improve workflows and help ensure consistent service delivery across the team.</p></div>
             </div>
             <div class="perks"><span>Growth-focused team</span><span>Hands-on learning</span><span>Student-first work</span></div>
           </div>
@@ -481,7 +483,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
                 <label>Full name<input type="text" name="name" required placeholder="Your name"></label>
                 <label>Phone / WhatsApp<input type="tel" name="phone" required placeholder="+91 ..."></label>
                 <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
-                <label>Role<select name="role" required><option value="">Choose a role</option><option>Education Counsellor</option><option>Visa &amp; Documentation Executive</option><option>Digital Marketing &amp; Content Executive</option><option>Other / General application</option></select></label>
+                <label>Role<select name="role" required><option value="">Choose a role</option><option>Education Counsellor</option><option>Social Media Executive</option><option>Head of Operations</option></select></label>
                 <label>Experience<select name="experience" required><option value="">Select</option><option>Fresher</option><option>0–1 years</option><option>1–3 years</option><option>3+ years</option></select></label>
                 <label>Current city<input type="text" name="city" required placeholder="e.g. Agra"></label>
               </div>
@@ -517,9 +519,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
               <p class="benefit-condition">Both benefits are provided upon successful conclusion of the internship, subject to meeting Quorista Overseas’ internship requirements and conditions.</p>
             </section>
             <div class="role-list">
-              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Education Counselling Intern</h4><p>Learn how study-abroad guidance works — destinations, universities, scholarships and student queries.</p></div>
-              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Travel &amp; Visa Documentation Intern</h4><p>Understand tourist visa processes and documentation workflows alongside the team.</p></div>
-              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Content &amp; Social Media Intern</h4><p>Build a portfolio by creating destination content and campaigns with guidance.</p></div>
+              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Overseas Education Research Intern</h4><p>Research international universities, courses, entry requirements, scholarships and study destinations.</p></div>
+              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Social Media &amp; Content Intern</h4><p>Help create social posts, destination content and digital materials for Quorista Overseas.</p></div>
+              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>International Tourism Research Intern</h4><p>Research international destinations, travel requirements, tourism experiences and visitor information.</p></div>
+              <div class="role"><span class="badge teal">INTERNSHIP · UNPAID</span><h4>Business Development &amp; Lead Management Intern</h4><p>Support prospect research, organize leads and help maintain follow-up information.</p></div>
             </div>
             <div class="perks"><span>Mentorship</span><span>Practical exposure</span><span>Experience to showcase</span></div>
           </div>
@@ -533,7 +536,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
                 <label>Full name<input type="text" name="name" required placeholder="Your name"></label>
                 <label>Phone / WhatsApp<input type="tel" name="phone" required placeholder="+91 ..."></label>
                 <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
-                <label>Internship area<select name="role" required><option value="">Choose an area</option><option>Education Counselling</option><option>Travel &amp; Visa Documentation</option><option>Content &amp; Social Media</option><option>Not sure yet</option></select></label>
+                <label>Internship area<select name="role" required><option value="">Choose an area</option><option>Overseas Education Research Intern</option><option>Social Media &amp; Content Intern</option><option>International Tourism Research Intern</option><option>Business Development &amp; Lead Management Intern</option></select></label>
                 <label>College / University<input type="text" name="college" required placeholder="Your institution"></label>
                 <label>Course &amp; year<input type="text" name="course" required placeholder="e.g. BBA, 2nd year"></label>
                 <label>Duration preferred<select name="duration" required><option value="">Select</option><option>1 month</option><option>2 months</option><option>3 months</option><option>6 months</option></select></label>
@@ -563,7 +566,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   <footer>
     <div class="container">
       <div class="footer-top">
-        <div><a class="company-name footer-company-name" href="index.html" aria-label="Quorista Overseas home">Quorista Overseas</a><p>Your Journey. Your Future. Beyond Borders.</p></div>
+        <div><a class="footer-logo-link" href="index.html" aria-label="Quorista Overseas home"><img class="footer-logo" src="assets/quorista-logo.png" alt="Quorista Overseas logo" loading="lazy"></a><p>Your Journey. Your Future. Beyond Borders.</p></div>
         <div><h4>EXPLORE</h4><ul><li><a href="index.html#destinations">Destinations</a></li><li><a href="index.html#study">Study Abroad</a></li><li><a href="index.html#travel">Tourism</a></li><li><a href="index.html#services">Services</a></li></ul></div>
         <div><h4>CONNECT</h4><ul><li><a href="https://wa.me/916395672828" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:quoristaoverseas@gmail.com">Email</a></li><li><a href="https://instagram.com/quoristaoverseas" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
