@@ -693,7 +693,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     if (todayInIndia !== '2026-10-29') temporaryDuration.remove();
   }
 
-  const tabs = $('.career-tab'), panels = $('.career-panel');
+  const tabs = $$('.career-tab'), panels = $$('.career-panel');
   if (tabs.length) {
     const ids = tabs.map(t => t.dataset.tab);
     const showTab = id => {
