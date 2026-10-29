@@ -540,7 +540,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
                 <label>Internship area<select name="role" required><option value="">Choose an area</option><option>Overseas Education Research Intern</option><option>Social Media &amp; Content Intern</option><option>International Tourism Research Intern</option><option>Business Development &amp; Lead Management Intern</option></select></label>
                 <label>College / University<input type="text" name="college" required placeholder="Your institution"></label>
                 <label>Course &amp; year<input type="text" name="course" required placeholder="e.g. BBA, 2nd year"></label>
-                <label>Duration preferred<select name="duration" required><option value="">Select</option><option>1 month</option><option>2 months</option><option>3 months</option><option>6 months</option></select></label>
+                <label>Duration preferred<select name="duration" required><option value="">Select</option><option>1 month</option><option>2 months</option><option>3 months</option><option>6 months</option><option value="18 Days Duration" id="temporary-18-days-duration">18 Days Duration</option></select></label>
                 <label>Mode<select name="mode"><option>Remote</option><option>On-site</option><option>Either</option></select></label>
               </div>
               <label class="full-label">Resume / profile link<input type="url" name="resume_link" placeholder="Google Drive, LinkedIn or portfolio link"></label>
@@ -684,7 +684,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   }
 
   /* ---------- careers tabs ---------- */
-  const tabs = $$('.career-tab'), panels = $$('.career-panel');
+  // Temporary duration option: available only on 29 October 2026 in India (IST).
+  const temporaryDuration = $('#temporary-18-days-duration');
+  if (temporaryDuration) {
+    const todayInIndia = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+    if (todayInIndia !== '2026-10-29') temporaryDuration.remove();
+  }
+
+  const tabs = $('.career-tab'), panels = $('.career-panel');
   if (tabs.length) {
     const ids = tabs.map(t => t.dataset.tab);
     const showTab = id => {
