@@ -886,5 +886,36 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 })();
 
 </script>
+
+<!-- Secure My Quorista sign-in status bridge. It sends only an active-client boolean. -->
+<iframe id="quorista-session-bridge" title="Quorista account session" aria-hidden="true" tabindex="-1"
+  src="https://account.quoristaoverseas.in/session-bridge.html"
+  style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0"></iframe>
+<script>
+(function () {
+  'use strict';
+  var frame = document.getElementById('quorista-session-bridge');
+  var accountLink = document.querySelector('.nav-cta');
+  if (!frame || !accountLink) return;
+
+  var defaultHref = accountLink.getAttribute('href');
+  window.addEventListener('message', function (event) {
+    if (event.origin !== 'https://account.quoristaoverseas.in') return;
+    if (event.source !== frame.contentWindow) return;
+
+    var message = event.data;
+    if (!message || message.type !== 'QUORISTA_CLIENT_SESSION' ||
+        typeof message.signedIn !== 'boolean') return;
+
+    accountLink.setAttribute('href', message.signedIn
+      ? 'https://account.quoristaoverseas.in/'
+      : defaultHref);
+    if (accountLink.firstChild && accountLink.firstChild.nodeType === Node.TEXT_NODE) {
+      accountLink.firstChild.nodeValue = message.signedIn ? 'My Account ' : 'Sign up / Log in ';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
