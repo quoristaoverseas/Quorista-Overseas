@@ -229,7 +229,7 @@ h3{font-size:1.5rem}
 .scholar-list span{padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-weight:600;transition:.3s}
 .scholar-list span:hover{background:rgba(255,255,255,.14);transform:translateX(6px)}
 .scholar-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
-.scholar-tags span{padding:8px 14px;border-radius:999px;background:rgba(255,176,32,.14);color:var(--saffron);font-weight:700;font-size:.85rem}
+.scholar-tags a{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:rgba(255,176,32,.14);color:var(--saffron);font-weight:700;font-size:.85rem;text-decoration:none;border:1px solid rgba(255,176,32,.18);transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}.scholar-tags a:hover,.scholar-tags a:focus-visible{background:var(--saffron);color:var(--ink);border-color:var(--saffron);transform:translateY(-2px);outline:none}
 
 /* services */
 .service-list{border-top:1px solid var(--line)}
@@ -623,7 +623,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           <h2>Your future<br>shouldn't be limited<br>by <em>one route.</em></h2>
           <p class="lead-light">We help students identify scholarship possibilities, understand eligibility and prepare supporting materials for their study plans.</p>
           <div class="scholar-list"><span>01 — Identify relevant opportunities</span><span>02 — Understand eligibility & documents</span><span>03 — Prepare application materials</span><span>04 — Organize the next steps</span></div>
-          <div class="scholar-tags"><span>🇰🇷 South Korea</span><span>🇭🇺 Hungary</span><span>🇩🇪 Germany</span><span>🇨🇳 China</span><span>🇹🇼 Taiwan</span></div>
+          <div class="scholar-tags" aria-label="Explore scholarship destination pages"><a href="destinations/south-korea.html">🇰🇷 South Korea</a><a href="destinations/hungary.html">🇭🇺 Hungary</a><a href="destinations/germany.html">🇩🇪 Germany</a><a href="destinations/china.html">🇨🇳 China</a><a href="destinations/taiwan.html">🇹🇼 Taiwan</a></div>
           <a class="btn btn-light" href="#contact">Ask about scholarships <span>→</span></a>
         </div>
       </div>
