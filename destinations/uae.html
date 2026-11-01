@@ -51,4 +51,4 @@ document.getElementById('sheetsSubmissionFrame').addEventListener('load',functio
 document.getElementById('destinationEnquiry').addEventListener('submit',function(){window.__quoristaFormSubmitted=true;});
 const sessionFrame=document.createElement('iframe');sessionFrame.src='https://account.quoristaoverseas.in/session-bridge.html';sessionFrame.title='Account session bridge';sessionFrame.style.display='none';document.body.appendChild(sessionFrame);
 window.addEventListener('message',function(event){if(event.origin!=='https://account.quoristaoverseas.in')return;if(event.data&&event.data.type==='QUORISTA_CLIENT_SESSION'&&event.data.signedIn){const cta=document.querySelector('.nav-cta');if(cta){cta.textContent='My Account →';cta.href='https://account.quoristaoverseas.in/';}}});
-</script></body></html>
+</script><script>(function(){var header=document.querySelector('.site-header');if(!header)return;var updateDestinationHeader=function(){header.classList.toggle('scrolled',window.scrollY>30);};updateDestinationHeader();window.addEventListener('scroll',updateDestinationHeader,{passive:true});})();</script></body></html>
