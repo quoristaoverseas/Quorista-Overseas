@@ -32,3 +32,6 @@
 .hero .eyebrow{color:var(--saffron)}
 @media(max-width:850px){.places,.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.places,.form-grid,.footer-grid{grid-template-columns:1fr}.form-card{padding:22px}.form-card .wide{grid-column:auto}.directory{min-width:700px}}
+
+/* Keep the destination enquiry disclaimer readable and close to the enquiry introduction. */
+.form-copy>.disclaimer{color:var(--text);font-size:.86rem;line-height:1.6;margin:22px 0 0;padding:14px 16px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-left:3px solid var(--saffron);border-radius:0 12px 12px 0}
