@@ -1,0 +1,243 @@
+<script>
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  let candidates = [];
+  let statuses = [];
+  let selectedCandidate = null;
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[char]));
+  }
+
+  function showNotice(message, kind) {
+    const notice = $('notice');
+    notice.textContent = message;
+    notice.className = 'notice ' + (kind === 'error' ? 'error' : 'success');
+    notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    window.setTimeout(() => notice.classList.add('hidden'), 7000);
+  }
+
+  function showError(error) {
+    showNotice(error && error.message ? error.message : String(error || 'Something went wrong.'), 'error');
+  }
+
+  function loadDashboard() {
+    $('loading').classList.remove('hidden');
+    $('dashboard').classList.add('hidden');
+    google.script.run
+      .withSuccessHandler(data => {
+        candidates = data.candidates || [];
+        statuses = data.statuses || [];
+        renderStats(data.counts || {});
+        populateStatusFilters();
+        renderRows();
+        $('loading').classList.add('hidden');
+        $('dashboard').classList.remove('hidden');
+      })
+      .withFailureHandler(error => {
+        $('loading').classList.add('hidden');
+        showError(error);
+      })
+      .getDashboardData();
+  }
+
+  function renderStats(counts) {
+    const cards = [
+      ['Total applications', counts.total || 0, 'All records in the sheet', '▦'],
+      ['Needs review', (counts.New || 0) + (counts['Under Review'] || 0) + (counts['On Hold'] || 0), 'New, review and on-hold', '◷'],
+      ['Interviews scheduled', counts['Interview Scheduled'] || 0, 'Upcoming candidate interviews', '▣'],
+      ['Selected / joined', (counts.Selected || 0) + (counts['Offer Accepted'] || 0) + (counts.Joined || 0), 'Selection and onboarding', '✓']
+    ];
+    $('stats').innerHTML = cards.map(item =>
+      '<div class="stat-card"><div class="stat-top"><span>' + escapeHtml(item[0]) + '</span><span class="stat-icon">' + item[3] +
+      '</span></div><div class="stat-value">' + Number(item[1]) + '</div><div class="stat-foot">' + escapeHtml(item[2]) + '</div></div>'
+    ).join('');
+  }
+
+  function populateStatusFilters() {
+    const filter = $('statusFilter');
+    const current = filter.value;
+    filter.innerHTML = '<option value="">All statuses</option>' + statuses.map(status =>
+      '<option value="' + escapeHtml(status) + '">' + escapeHtml(status) + '</option>'
+    ).join('');
+    filter.value = current;
+    const edit = $('editStatus');
+    edit.innerHTML = statuses.map(status =>
+      '<option value="' + escapeHtml(status) + '">' + escapeHtml(status) + '</option>'
+    ).join('');
+  }
+
+  function filteredCandidates() {
+    const query = $('searchInput').value.trim().toLowerCase();
+    const status = $('statusFilter').value;
+    const type = $('typeFilter').value;
+    return candidates.filter(candidate => {
+      const haystack = [candidate.name, candidate.email, candidate.phone, candidate.role, candidate.candidateId, candidate.employeeId, candidate.college]
+        .join(' ').toLowerCase();
+      const matchesQuery = !query || haystack.includes(query);
+      const matchesStatus = !status || (candidate.recruitmentStatus || 'New') === status;
+      const appType = (candidate.applicationType || '').toLowerCase();
+      const matchesType = !type || (type === 'intern' ? appType.includes('intern') : !appType.includes('intern'));
+      return matchesQuery && matchesStatus && matchesType;
+    });
+  }
+
+  function statusClass(status) {
+    return 'status-' + String(status || 'New').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function renderRows() {
+    const rows = filteredCandidates();
+    $('recordCount').textContent = rows.length + (rows.length === 1 ? ' record' : ' records');
+    $('candidateRows').innerHTML = rows.map(candidate => {
+      const type = (candidate.applicationType || '').toLowerCase().includes('intern') ? 'Internship' : 'Full-time';
+      const status = candidate.recruitmentStatus || 'New';
+      return '<tr>' +
+        '<td><div class="candidate-name">' + escapeHtml(candidate.name || 'Unnamed candidate') + '</div><div class="candidate-email">' + escapeHtml(candidate.email) + '</div></td>' +
+        '<td><div class="role-text" title="' + escapeHtml(candidate.role) + '">' + escapeHtml(candidate.role || '—') + '</div></td>' +
+        '<td><span class="type-pill">' + type + '</span></td>' +
+        '<td>' + escapeHtml(candidate.submittedAt || '—') + '</td>' +
+        '<td><span class="status-pill ' + statusClass(status) + '">' + escapeHtml(status) + '</span></td>' +
+        '<td>' + escapeHtml(candidate.employeeId || candidate.candidateId || '—') + '</td>' +
+        '<td><div class="row-actions"><button class="small-button" data-action="details" data-row="' + candidate.rowNumber + '">Review</button>' +
+        '<button class="small-button interview" data-action="interview" data-row="' + candidate.rowNumber + '">Interview</button></div></td>' +
+        '</tr>';
+    }).join('');
+    $('emptyState').classList.toggle('hidden', rows.length !== 0);
+  }
+
+  function detail(label, value, full) {
+    let rendered = escapeHtml(value || '—');
+    if (label === 'Resume / profile' && value) {
+      const safeUrl = String(value).trim();
+      if (/^https:\/\//i.test(safeUrl)) rendered = '<a href="' + escapeHtml(safeUrl) + '" target="_blank" rel="noopener noreferrer">Open resume / profile ↗</a>';
+    }
+    return '<div class="detail-item' + (full ? ' full' : '') + '"><div class="detail-label">' + escapeHtml(label) + '</div><div class="detail-value">' + rendered + '</div></div>';
+  }
+
+  function openCandidate(rowNumber) {
+    selectedCandidate = candidates.find(candidate => Number(candidate.rowNumber) === Number(rowNumber));
+    if (!selectedCandidate) return;
+    const c = selectedCandidate;
+    $('candidateModalTitle').textContent = c.name || 'Candidate details';
+    $('candidateDetails').innerHTML =
+      detail('Application type', c.applicationType) +
+      detail('Applied for', c.role) +
+      detail('Email', c.email) +
+      detail('Phone / WhatsApp', c.phone) +
+      detail('City', c.city) +
+      detail('Submitted at', c.submittedAt) +
+      detail('Experience', c.experience) +
+      detail('Availability', c.hours ? c.hours + ' hours/week' : '') +
+      detail('College / university', c.college) +
+      detail('Course & year', c.course) +
+      detail('Preferred duration', c.duration) +
+      detail('Mode', c.mode) +
+      detail('Resume / profile', c.resumeLink, true) +
+      detail('Candidate message', c.message, true) +
+      detail('Unique employee / intern ID', c.employeeId || c.candidateId);
+    $('editStatus').value = c.recruitmentStatus || 'New';
+    $('editNotes').value = c.notes || '';
+    $('generatedIdNotice').classList.add('hidden');
+    $('candidateModal').classList.remove('hidden');
+  }
+
+  function openInterview(rowNumber) {
+    selectedCandidate = candidates.find(candidate => Number(candidate.rowNumber) === Number(rowNumber));
+    if (!selectedCandidate) return;
+    $('interviewCandidateLabel').textContent = (selectedCandidate.name || 'Candidate') + ' · ' + (selectedCandidate.role || 'Role not specified');
+    $('interviewForm').reset();
+    $('interviewDuration').value = '30';
+    $('interviewModal').classList.remove('hidden');
+  }
+
+  function closeModal(id) {
+    $(id).classList.add('hidden');
+  }
+
+  $('candidateRows').addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]');
+    if (!button) return;
+    if (button.dataset.action === 'details') openCandidate(button.dataset.row);
+    if (button.dataset.action === 'interview') openInterview(button.dataset.row);
+  });
+
+  $('searchInput').addEventListener('input', renderRows);
+  $('statusFilter').addEventListener('change', renderRows);
+  $('typeFilter').addEventListener('change', renderRows);
+  $('refreshButton').addEventListener('click', loadDashboard);
+
+  document.querySelectorAll('[data-close]').forEach(button => {
+    button.addEventListener('click', () => closeModal(button.dataset.close));
+  });
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal(modal.id);
+    });
+  });
+
+  $('saveCandidateButton').addEventListener('click', () => {
+    if (!selectedCandidate) return;
+    const button = $('saveCandidateButton');
+    button.disabled = true;
+    button.textContent = 'Saving…';
+    google.script.run
+      .withSuccessHandler(result => {
+        button.disabled = false;
+        button.textContent = 'Save changes';
+        if (result.employeeId) {
+          $('generatedIdNotice').textContent = 'Unique ID assigned: ' + result.employeeId;
+          $('generatedIdNotice').classList.remove('hidden');
+        }
+        showNotice('Candidate record updated successfully.', 'success');
+        closeModal('candidateModal');
+        loadDashboard();
+      })
+      .withFailureHandler(error => {
+        button.disabled = false;
+        button.textContent = 'Save changes';
+        showError(error);
+      })
+      .updateCandidate(selectedCandidate.rowNumber, $('editStatus').value, $('editNotes').value);
+  });
+
+  $('interviewForm').addEventListener('submit', event => {
+    event.preventDefault();
+    if (!selectedCandidate) return;
+    const button = $('scheduleButton');
+    button.disabled = true;
+    button.textContent = 'Creating event…';
+    google.script.run
+      .withSuccessHandler(result => {
+        button.disabled = false;
+        button.textContent = 'Create interview & send invite';
+        closeModal('interviewModal');
+        showNotice(result.message || 'Interview scheduled.', 'success');
+        loadDashboard();
+      })
+      .withFailureHandler(error => {
+        button.disabled = false;
+        button.textContent = 'Create interview & send invite';
+        showError(error);
+      })
+      .scheduleInterview(
+        selectedCandidate.rowNumber,
+        $('interviewDateTime').value,
+        $('interviewDuration').value,
+        $('meetUrl').value
+      );
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeModal('candidateModal');
+      closeModal('interviewModal');
+    }
+  });
+
+  loadDashboard();
+})();
+</script>
