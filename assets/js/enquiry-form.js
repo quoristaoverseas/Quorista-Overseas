@@ -2,6 +2,13 @@
    Keeps the existing Apps Script endpoint and field names unchanged. */
 (function(){
   'use strict';
+  // Lock the iframe target to a stable name before any legacy submit handler runs.
+  // This prevents the Apps Script response from replacing the current page.
+  const submissionFrame=document.getElementById('sheetsSubmissionFrame');
+  if(submissionFrame){
+    submissionFrame.name='sheetsSubmissionFrame';
+    submissionFrame.setAttribute('name','sheetsSubmissionFrame');
+  }
   const forms=[...document.querySelectorAll('form#leadForm,form#destinationEnquiry')];
   forms.forEach(form=>{
     if(!/script\.google\.com\/macros\/s\//.test(form.getAttribute('action')||'')) return;
@@ -12,6 +19,14 @@
     if(!controls.name||!controls.phone||!controls.email||!controls.interest) return;
     form.dataset.qoEnhanced='true';
     form.classList.add('qo-enquiry-form');
+    if(submissionFrame){
+      // Set this in the capture phase so the native Apps Script POST is always
+      // directed to the hidden iframe, not the top-level browser window.
+      form.addEventListener('submit',()=>{
+        form.target='sheetsSubmissionFrame';
+        form.setAttribute('target','sheetsSubmissionFrame');
+      },true);
+    }
 
     const progress=document.createElement('div');
     progress.className='qo-enquiry-progress-wrap';
