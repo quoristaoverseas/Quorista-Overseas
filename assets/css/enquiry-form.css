@@ -1,0 +1,15 @@
+/* Quorista Overseas — shared two-step enquiry form */
+.qo-enquiry-progress{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 22px}
+.qo-enquiry-progress__segment{height:5px;border-radius:99px;background:rgba(16,6,92,.14);overflow:hidden}
+.qo-enquiry-progress__segment.is-active{background:var(--saffron,#ffb020)}
+.qo-enquiry-progress__meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 16px;font:700 .76rem/1.4 'Manrope',sans-serif;letter-spacing:.08em;color:var(--muted,#5d5a7e)}
+.qo-enquiry-progress__meta strong{color:var(--indigo,#10065c)}
+.qo-enquiry-field[hidden],form.qo-enquiry-form [hidden]{display:none!important}
+.qo-enquiry-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 0}
+.qo-enquiry-controls button{min-height:46px;padding:11px 20px;border-radius:999px;font:800 .9rem 'Manrope',sans-serif;cursor:pointer;transition:transform .2s,opacity .2s}
+.qo-enquiry-controls button:hover{transform:translateY(-2px)}
+.qo-enquiry-next{border:0;background:var(--indigo,#10065c);color:#fff}
+.qo-enquiry-back{border:1px solid rgba(16,6,92,.22);background:transparent;color:var(--indigo,#10065c)}
+.qo-enquiry-controls button:focus-visible{outline:3px solid var(--violet,#5b3df5);outline-offset:3px}
+.qo-enquiry-controls .qo-enquiry-next{margin-left:auto}
+@media(max-width:520px){.qo-enquiry-controls button{flex:1}.qo-enquiry-controls{width:100%}}
