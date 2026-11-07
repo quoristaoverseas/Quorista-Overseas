@@ -1,25 +1,27 @@
-/* Quorista destination pages — shared responsive layer
-   Loaded after each destination's design and enquiry styles. */
+/* Quorista destination pages — targeted responsive corrections.
+   This stylesheet loads after the shared destination design and enquiry styles. */
 :root { scroll-padding-top: 88px; }
-html, body { max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; }
+html { overflow-x: clip; }
 body { overflow-x: clip; }
 img, picture, video, iframe, svg { max-width: 100%; }
 img { height: auto; }
-.container { width: min(1180px, calc(100% - 40px)); }
-
-.site-header { max-width: 100%; }
-.nav-wrap { min-width: 0; }
-.brand { min-width: 0; }
-.menu-toggle { flex: 0 0 44px; min-width: 44px; min-height: 44px; cursor: pointer; }
+.container { width: min(1180px, calc(100% - 40px)); min-width: 0; }
+.site-header { width: 100%; max-width: 100%; }
+.nav-wrap, .brand { min-width: 0; }
+.menu-toggle { flex: 0 0 44px; min-width: 44px; min-height: 44px; cursor: pointer; touch-action: manipulation; }
 .nav a, .btn, .nav-cta { touch-action: manipulation; }
 .quicknav { max-width: 100%; }
-.quicknav .container { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
-.table-wrap, .table-responsive { display: block; width: 100%; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
-.table-wrap table, .table-responsive table { min-width: 620px; }
-.directory { max-width: 100%; }
-.form-shell, .form-card { min-width: 0; }
+.quicknav .container { max-width: 100%; min-width: 0; }
+.table-wrap { display: block; width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+.table-wrap .data-table { min-width: 620px; }
+.table-wrap .directory { display: table; width: 100%; min-width: 700px; max-width: none; overflow: visible; }
+.form-layout, .form-grid, .overview-grid, .two-col, .three-col, .steps, .tour-grid, .places,
+.fact-grid, .source-list, .footer-top, .footer-grid { min-width: 0; }
+.form-shell, .form-card, .overview-card, .info-card, .panel, .tour-card, .place, .step, .fact { min-width: 0; }
 .form-shell input, .form-shell select, .form-shell textarea,
-.form-card input, .form-card select, .form-card textarea { min-width: 0; max-width: 100%; }
+.form-card input, .form-card select, .form-card textarea { min-width: 0; max-width: 100%; box-sizing: border-box; }
 a, p, li, td, th, label { overflow-wrap: anywhere; }
 
 @media (max-width: 850px) {
@@ -39,7 +41,7 @@ a, p, li, td, th, label { overflow-wrap: anywhere; }
     overflow-x: hidden;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    padding: 18px 5% max(22px, env(safe-area-inset-bottom));
+    padding: 18px max(20px, calc((100vw - 1180px) / 2)) max(22px, env(safe-area-inset-bottom));
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
@@ -49,15 +51,14 @@ a, p, li, td, th, label { overflow-wrap: anywhere; }
   .nav.open { display: flex; }
   .nav a { display: flex; align-items: center; min-height: 46px; padding: 10px 12px; font-size: .98rem; }
   .nav .nav-cta { justify-content: center; margin-top: 6px; }
-  .hero { padding-top: 116px; padding-bottom: 64px; min-height: 0; }
-  .hero h1 { font-size: clamp(2.45rem, 7vw, 4.5rem); overflow-wrap: anywhere; }
+  .hero { min-height: 0; padding: 132px 0 64px; }
+  .hero .container { width: min(100% - 40px, 1180px); }
+  .hero h1 { max-width: 100%; font-size: clamp(2.45rem, 7vw, 4.5rem); overflow-wrap: break-word; }
+  .hero p { max-width: 68ch; }
   .overview-grid, .form-layout { grid-template-columns: minmax(0, 1fr); }
-  .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .three-col, .tour-grid, .places { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .overview-card, .info-card, .panel, .tour-card, .place, .step { min-width: 0; }
+  .two-col, .three-col, .tour-grid, .places, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-layout { gap: 28px; }
-  .form-shell, .form-card { width: 100%; padding: 24px; }
+  .form-shell, .form-card { width: 100%; max-width: 100%; padding: 24px; }
   .footer-top, .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -66,63 +67,68 @@ a, p, li, td, th, label { overflow-wrap: anywhere; }
   .container { width: calc(100% - 32px); }
   .site-header { padding: 10px 0; }
   .site-header.scrolled { padding: 8px 0; }
-  .nav-wrap { min-height: 48px; }
-  .brand, .brand.company-name { font-size: 1.12rem; max-width: calc(100% - 58px); white-space: normal; line-height: 1.15; }
-  .hero { padding: 104px 0 48px; }
-  .hero h1 { font-size: clamp(2.15rem, 10vw, 3.4rem); line-height: 1.06; margin: 12px 0; }
+  .nav-wrap { min-height: 48px; gap: 10px; }
+  .brand.company-name, .brand { max-width: calc(100% - 58px); font-size: clamp(1rem, 4.3vw, 1.2rem); line-height: 1.15; white-space: normal; }
+  .hero { min-height: 0; padding: 112px 0 48px; }
+  .hero .container { width: calc(100% - 32px); }
+  .hero h1 { font-size: clamp(2.1rem, 9.5vw, 3.35rem); line-height: 1.08; margin: 12px 0; }
   .hero p { font-size: 1rem; line-height: 1.65; }
-  .hero-actions { gap: 10px; }
-  .hero-actions .btn { min-height: 46px; width: 100%; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hero-actions .btn { min-height: 46px; }
   .hero-tags { gap: 7px; }
   .hero-tags span { font-size: .78rem; }
   .quicknav { padding: 10px 0; }
-  .quicknav .container { flex-wrap: nowrap; gap: 14px; padding: 8px 0; white-space: nowrap; }
+  .quicknav .container { display: flex; flex-wrap: nowrap; gap: 14px; padding: 8px 0; white-space: nowrap; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
   .section { padding: 48px 0; }
   .section-head { margin-bottom: 24px; }
-  .section-head h2, h2 { font-size: clamp(1.7rem, 7.4vw, 2.35rem); }
+  .section-head h2, h2 { font-size: clamp(1.65rem, 7.2vw, 2.3rem); }
   .section-head p { font-size: .98rem; }
-  .overview-grid, .two-col, .three-col, .tour-grid, .places,
-  .steps, .fact-grid, .form-grid, .source-list, .footer-top, .footer-grid {
+  .overview-grid, .two-col, .three-col, .tour-grid, .places, .steps,
+  .fact-grid, .form-grid, .source-list, .footer-top, .footer-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .overview-card, .info-card, .panel, .tour-card, .place, .step { padding: 20px; border-radius: 17px; }
   .fact-grid { gap: 10px; }
   .fact { padding: 14px; }
   .form-layout { gap: 22px; }
-  .form-shell, .form-card { padding: 20px; border-radius: 18px; }
+  .form-shell, .form-card { width: 100%; max-width: 100%; padding: 20px; border-radius: 18px; }
   .form-grid { gap: 12px; }
   .form-shell label, .form-card label { font-size: .9rem; }
   .form-shell input, .form-shell select, .form-shell textarea,
   .form-card input, .form-card select, .form-card textarea {
-    font-size: 16px;
-    line-height: 1.4;
-    min-height: 46px;
-    padding: 11px 12px;
+    display: block; width: 100%; min-width: 0; max-width: 100%;
+    min-height: 46px; padding: 11px 12px; font-size: 16px; line-height: 1.4;
   }
   .form-shell textarea, .form-card textarea { min-height: 116px; }
   .consent { align-items: flex-start; }
-  .consent input { flex: 0 0 auto; min-height: 18px; }
+  .consent input { flex: 0 0 auto; width: auto; min-height: 18px; }
   .submit-btn, .form-shell button, .form-card button { min-height: 46px; }
   .footer { padding: 34px 0 22px; }
-  .footer-top { gap: 22px; }
+  .footer-top, .footer-grid { gap: 22px; }
   .footer-bottom { flex-direction: column; gap: 12px; }
   .footer-bottom nav, .footer-links { gap: 12px; }
+  .footer-logo { max-width: min(100%, 220px); height: auto; max-height: 60px; }
   .to-top { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
   .source-links { gap: 9px; }
   .source-links a { max-width: 100%; }
-  .directory, .data-table { display: block; width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .directory th, .directory td, .data-table th, .data-table td { padding: 11px 12px; }
+  /* The directory table is deliberately wider than the phone; its .table-wrap parent scrolls. */
+  .table-wrap { max-width: 100%; }
+  .table-wrap .directory { display: table; min-width: 700px; width: 100%; overflow: visible; }
+  .table-wrap .data-table { min-width: 620px; }
   .disclaimer-section .disclaimer { padding: 12px 14px; }
+  .form-top { flex-wrap: wrap; align-items: flex-start; }
 }
 
 @media (max-width: 380px) {
-  .container { width: calc(100% - 28px); }
-  .brand, .brand.company-name { font-size: 1.02rem; }
-  .hero { padding-top: 96px; }
-  .hero h1 { font-size: clamp(2rem, 10vw, 2.55rem); }
-  .hero-actions .btn { padding: 12px 14px; }
+  .container, .hero .container { width: calc(100% - 28px); }
+  .brand.company-name, .brand { font-size: 1rem; }
+  .hero { padding-top: 100px; }
+  .hero h1 { font-size: clamp(1.95rem, 9.8vw, 2.5rem); }
+  .hero-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .hero-actions .btn { width: 100%; padding: 12px 14px; }
   .form-shell, .form-card { padding: 16px; }
   .overview-card, .info-card, .panel, .tour-card, .place, .step { padding: 17px; }
+  .form-top { gap: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
