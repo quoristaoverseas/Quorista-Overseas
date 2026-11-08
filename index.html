@@ -503,6 +503,27 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   .hero-orb, .route-map path, .route-dot, .hero-badge, .marquee-track { animation: none !important; }
 }
 
+
+/* ===== searchable FAQ ===== */
+.faq-intro{max-width:680px;margin-top:18px;color:var(--muted);font-size:1.02rem}
+.faq-tools{display:grid;grid-template-columns:1fr auto;gap:8px 18px;align-items:center;max-width:760px;margin:38px auto 18px}
+.faq-search-label{grid-column:1/-1;font:800 .72rem 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
+.faq-tools input{width:100%;min-height:54px;border:1px solid rgba(16,6,92,.18);border-radius:14px;padding:0 18px;background:#fff;color:var(--text);outline:none;box-shadow:0 8px 24px rgba(16,6,92,.05)}
+.faq-tools input:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(91,61,245,.12)}
+#faqCount{font-size:.82rem;color:var(--muted);white-space:nowrap}
+.faq-list{max-width:900px;margin:0 auto;display:grid;gap:12px}
+.faq-item{background:#fff;border:1px solid rgba(16,6,92,.1);border-radius:16px;padding:0 22px;box-shadow:0 8px 24px rgba(16,6,92,.035)}
+.faq-item[open]{border-color:rgba(91,61,245,.3);box-shadow:0 14px 34px rgba(16,6,92,.08)}
+.faq-item summary{position:relative;list-style:none;cursor:pointer;padding:21px 38px 21px 0;font:800 1rem/1.45 'Manrope',sans-serif;color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--mist);color:var(--violet);font-size:1.25rem}
+.faq-item[open] summary::after{content:'−';background:var(--indigo);color:#fff}
+.faq-item p{max-width:780px;padding:0 36px 22px 0;color:var(--muted);font-size:.96rem;line-height:1.75}
+.faq-empty{max-width:900px;margin:22px auto;color:var(--muted)}
+.faq-empty a{color:var(--violet);font-weight:800;text-decoration:underline}
+.faq-bottom{max-width:900px;margin:30px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-weight:700}
+@media(max-width:600px){.faq-tools{grid-template-columns:1fr;margin-top:28px}.faq-tools input{min-height:50px}#faqCount{justify-self:end}.faq-item{padding-inline:17px}.faq-item summary{font-size:.94rem;padding-block:18px}.faq-item p{font-size:.91rem;padding-right:0}.faq-bottom{align-items:stretch;flex-direction:column}.faq-bottom .btn{justify-content:center}}
+
 </style>
   <link rel="stylesheet" href="assets/css/enquiry-form.css">
   <script defer src="assets/js/enquiry-form.js"></script>
@@ -520,6 +541,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
         <a href="#universities">Universities</a>
         <a href="#travel">Tourism</a>
         <a href="#services">Services</a>
+        <a href="#faq">FAQs</a>
         <a href="https://account.quoristaoverseas.in/" class="nav-cta">Sign up / Log in <span>→</span></a>
       </nav>
     </div>
@@ -739,6 +761,25 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           <div class="process-step reveal"><b>04</b><span>APPLY</span><p>Application & visa assistance.</p></div>
           <div class="process-step reveal"><b>05</b><span>GO BEYOND</span><p>Pre-departure / pre-travel guidance.</p></div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- FAQ: clear answers before an enquiry -->
+    <section id="faq" class="faq-section section-light">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">A FEW THINGS TO KNOW</p><h2>Good decisions start<br><em>with clear answers.</em></h2><p class="faq-intro">Explore practical answers about our study, travel and visa-support services. If your question is more specific, our team can discuss it with you.</p></div></div>
+        <div class="faq-tools"><label class="faq-search-label" for="faqSearch">Find an answer</label><input id="faqSearch" type="search" placeholder="Search services, visas, applications…" autocomplete="off"><span id="faqCount" aria-live="polite">6 answers</span></div>
+        <div class="faq-list" id="faqList">
+          <details class="faq-item"><summary>What services does Quorista Overseas provide?</summary><p>Quorista Overseas supports Study Abroad and International Tourism. Depending on your requirements, our assistance can include destination and institution research, admission-related guidance, travel planning, visa documentation preparation and process guidance.</p></details>
+          <details class="faq-item"><summary>Can Quorista guarantee admission or visa approval?</summary><p>No. Admission decisions are made by the relevant institutions, and visa decisions are made by the competent immigration or consular authorities. We focus on realistic planning, suitable options and careful documentation; no admission or visa outcome can be guaranteed.</p></details>
+          <details class="faq-item"><summary>Do you work only with partner universities or travel providers?</summary><p>No. Our guidance is not limited to a fixed partner list. We can research relevant institutions and travel options according to a client's goals and eligibility. Any formal partnership or representation is identified separately where it applies.</p></details>
+          <details class="faq-item"><summary>Do I need to choose a destination before contacting you?</summary><p>No. You can contact us while you are still exploring. Share your broad goal, preferred course or travel purpose, budget and timeline if known, and our team can help you understand possible next steps.</p></details>
+          <details class="faq-item"><summary>Is the questionnaire in My Quorista mandatory?</summary><p>No. Creating an account registers your enquiry as a case and helps our team contact you. The additional questionnaire is optional and can be completed when you are ready to share more detailed requirements.</p></details>
+          <details class="faq-item"><summary>What should I prepare before speaking with a counsellor?</summary><p>Start with your basic contact details, service interest, destination preferences and approximate timeline. For study enquiries, your latest academic qualification and intended course are useful. For tourism enquiries, travel dates, travellers and trip purpose are helpful. You do not need to have every detail finalized.</p></details>
+        </div>
+        <p class="faq-empty" id="faqEmpty" hidden>No matching answer found. Try a different search term or <a href="#contact">send us your question</a>.</p>
+        <div class="faq-bottom"><span>Still have a question?</span><a class="btn btn-dark" href="#contact">Talk to Quorista <span>→</span></a></div>
       </div>
     </section>
 
@@ -1009,6 +1050,30 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     if (accountLink.firstChild && accountLink.firstChild.nodeType === Node.TEXT_NODE) {
       accountLink.firstChild.nodeValue = message.signedIn ? 'My Account ' : 'Sign up / Log in ';
     }
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  const input=document.getElementById('faqSearch');
+  const list=document.getElementById('faqList');
+  if(!input||!list)return;
+  const items=[...list.querySelectorAll('.faq-item')];
+  const count=document.getElementById('faqCount');
+  const empty=document.getElementById('faqEmpty');
+  input.addEventListener('input',()=>{
+    const term=input.value.trim().toLocaleLowerCase();
+    let visible=0;
+    items.forEach(item=>{
+      const match=item.textContent.toLocaleLowerCase().includes(term);
+      item.hidden=!match;
+      if(!match)item.open=false;
+      if(match)visible++;
+    });
+    count.textContent=visible+' '+(visible===1?'answer':'answers');
+    empty.hidden=visible!==0;
   });
 })();
 </script>
