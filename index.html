@@ -57,6 +57,8 @@
   --grad:linear-gradient(135deg,#5b3df5 0%,#ff6b57 60%,#ffb020 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+ .skip-link{position:fixed;left:14px;top:12px;z-index:1000;padding:11px 16px;border-radius:9px;background:var(--saffron);color:var(--ink);font-weight:800;transform:translateY(-160%);transition:transform .2s}
+ .skip-link:focus{transform:translateY(0);outline:3px solid #fff;outline-offset:3px}
 html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
 body{font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--cream);line-height:1.65;overflow-x:clip;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
@@ -559,12 +561,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   <script defer src="assets/js/enquiry-form.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="progress"><span id="progressBar"></span></div>
 
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand company-name" href="#home" aria-label="Quorista Overseas home">Quorista Overseas</a>
-      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button type="button" class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Main navigation">
         <a href="#destinations">Destinations</a>
         <a href="#study">Study Abroad</a>
@@ -577,7 +580,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- HERO -->
     <section id="home" class="hero">
       <div class="hero-grid"></div>
@@ -646,10 +649,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 
         <div class="atlas-toolbar reveal">
           <div class="filter-tabs" role="tablist" aria-label="Filter destinations">
-            <button class="filter active" data-filter="all">All 14</button>
-            <button class="filter" data-filter="asia">Asia</button>
-            <button class="filter" data-filter="europe">Europe</button>
-            <button class="filter" data-filter="middle-east">Middle East</button>
+            <button type="button" class="filter active" data-filter="all" aria-pressed="true">All 14</button>
+            <button type="button" class="filter" data-filter="asia" aria-pressed="false">Asia</button>
+            <button type="button" class="filter" data-filter="europe" aria-pressed="false">Europe</button>
+            <button type="button" class="filter" data-filter="middle-east" aria-pressed="false">Middle East</button>
           </div>
           <label class="atlas-search" for="destinationSearch"><span>⌕</span><input id="destinationSearch" type="search" placeholder="Search destinations…" autocomplete="off" aria-label="Search destinations"><button type="button" id="clearDestinationSearch" aria-label="Clear destination search" hidden>Clear</button></label>
           <span class="atlas-note" aria-live="polite">14 / 14 destinations</span>
@@ -944,7 +947,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   });
 
   /* ---------- searchable destination explorer ---------- */
-  const cards = $('.dest-card'), filters = $('.filter'), note = $('.atlas-note');
+  const cards = $$('.dest-card'), filters = $$('.filter'), note = $('.atlas-note');
   const search = $('#destinationSearch'), clearSearch = $('#clearDestinationSearch');
   let activeRegion = 'all';
   const updateDestinations = () => {
