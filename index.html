@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Quorista Overseas — Education and Travel Consultancy helping Indian students and travellers explore destinations, university pathways, scholarships, visas and international opportunities.">
   <meta name="theme-color" content="#10065c">
+  <link rel="canonical" href="https://quoristaoverseas.in/">
+  <meta property="og:url" content="https://quoristaoverseas.in/">
+  <meta property="og:image" content="https://quoristaoverseas.in/assets/quorista-logo.png">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Quorista Overseas",
+    "url": "https://quoristaoverseas.in/",
+    "logo": "https://quoristaoverseas.in/assets/quorista-logo.png",
+    "email": "quoristaoverseas@gmail.com",
+    "sameAs": [
+      "https://instagram.com/quoristaoverseas"
+    ],
+    "description": "Education and international tourism guidance, including destination research, admissions support and visa documentation guidance."
+  }
+  </script>
   <meta property="og:title" content="Quorista Overseas | Your Journey. Your Future. Beyond Borders.">
   <meta property="og:description" content="Study • Travel • Opportunities Beyond Borders — explore 14 destinations and get practical guidance from Quorista Overseas.">
   <meta property="og:type" content="website">
@@ -524,6 +542,18 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 .faq-bottom{max-width:900px;margin:30px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-weight:700}
 @media(max-width:600px){.faq-tools{grid-template-columns:1fr;margin-top:28px}.faq-tools input{min-height:50px}#faqCount{justify-self:end}.faq-item{padding-inline:17px}.faq-item summary{font-size:.94rem;padding-block:18px}.faq-item p{font-size:.91rem;padding-right:0}.faq-bottom{align-items:stretch;flex-direction:column}.faq-bottom .btn{justify-content:center}}
 
+
+/* Destination explorer search */
+.atlas-search{display:flex;align-items:center;gap:9px;min-width:min(100%,270px);flex:1 1 250px;max-width:390px;min-height:48px;padding:5px 8px 5px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);color:#fff}
+.atlas-search>span{font-size:1.35rem;line-height:1;color:var(--saffron)}
+.atlas-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font:600 .9rem 'DM Sans',sans-serif}
+.atlas-search input::placeholder{color:rgba(255,255,255,.62)}
+.atlas-search input:focus-visible{outline:0}
+.atlas-search:focus-within{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(255,176,32,.16)}
+.atlas-search button{border:0;border-radius:999px;background:var(--saffron);color:var(--ink);padding:7px 11px;font-size:.72rem;font-weight:800;cursor:pointer}
+.destination-empty{padding:28px 18px;text-align:center;border:1px dashed rgba(255,255,255,.24);border-radius:18px;color:rgba(255,255,255,.78)}
+@media(max-width:600px){.atlas-search{order:2;max-width:none;flex-basis:100%}.atlas-note{order:3;width:100%}.filter-tabs{max-width:100%;border-radius:18px}.filter{padding:9px 13px;font-size:.82rem}}
+
 </style>
   <link rel="stylesheet" href="assets/css/enquiry-form.css">
   <script defer src="assets/js/enquiry-form.js"></script>
@@ -621,7 +651,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
             <button class="filter" data-filter="europe">Europe</button>
             <button class="filter" data-filter="middle-east">Middle East</button>
           </div>
-          <span class="atlas-note">14 / 14 destinations</span>
+          <label class="atlas-search" for="destinationSearch"><span>⌕</span><input id="destinationSearch" type="search" placeholder="Search destinations…" autocomplete="off" aria-label="Search destinations"><button type="button" id="clearDestinationSearch" aria-label="Clear destination search" hidden>Clear</button></label>
+          <span class="atlas-note" aria-live="polite">14 / 14 destinations</span>
         </div>
 
         <div class="destination-grid">
@@ -912,18 +943,41 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     checkImg(img);
   });
 
-  /* ---------- destination filter ---------- */
-  const cards = $$('.dest-card'), note = $('.atlas-note');
-  $$('.filter').forEach(btn => btn.addEventListener('click', () => {
-    $$('.filter').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    const f = btn.dataset.filter; let n = 0;
-    cards.forEach(c => {
-      const ok = f === 'all' || c.dataset.region === f;
-      c.classList.toggle('hide', !ok);
-      if (ok) { n++; show(c); }
+  /* ---------- searchable destination explorer ---------- */
+  const cards = $('.dest-card'), note = $('.atlas-note');
+  const search = $('#destinationSearch'), clearSearch = $('#clearDestinationSearch');
+  let activeRegion = 'all';
+  const updateDestinations = () => {
+    const term = (search?.value || '').trim().toLocaleLowerCase();
+    let count = 0;
+    cards.forEach(card => {
+      const regionMatch = activeRegion === 'all' || card.dataset.region === activeRegion;
+      const searchable = [card.dataset.country, card.dataset.region, card.dataset.tags, card.dataset.copy, $('.country-region', card)?.textContent].join(' ').toLocaleLowerCase();
+      const matches = regionMatch && (!term || searchable.includes(term));
+      card.classList.toggle('hide', !matches);
+      if (matches) { count++; show(card); }
     });
-    if (note) note.textContent = n + ' / ' + cards.length + ' destinations';
+    if (note) note.textContent = count + ' / ' + cards.length + (count === 1 ? ' destination' : ' destinations');
+    if (clearSearch) clearSearch.hidden = !term;
+    let empty = $('#destinationEmpty');
+    if (!empty && cards.length) {
+      empty = document.createElement('p');
+      empty.id = 'destinationEmpty'; empty.className = 'destination-empty';
+      empty.setAttribute('role', 'status');
+      empty.textContent = 'No destinations match your search. Try another country or region.';
+      $('.destination-grid')?.after(empty);
+    }
+    if (empty) empty.hidden = count !== 0;
+  };
+  $('.filter').forEach(btn => btn.addEventListener('click', () => {
+    $('.filter').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+    activeRegion = btn.dataset.filter || 'all';
+    updateDestinations();
   }));
+  search?.addEventListener('input', updateDestinations);
+  clearSearch?.addEventListener('click', () => { search.value = ''; search.focus(); updateDestinations(); });
+  updateDestinations();
 
   /* ---------- destination modal ---------- */
   const modal = $('#destModal');
