@@ -944,7 +944,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   });
 
   /* ---------- searchable destination explorer ---------- */
-  const cards = $('.dest-card'), note = $('.atlas-note');
+  const cards = $('.dest-card'), filters = $('.filter'), note = $('.atlas-note');
   const search = $('#destinationSearch'), clearSearch = $('#clearDestinationSearch');
   let activeRegion = 'all';
   const updateDestinations = () => {
@@ -969,8 +969,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     }
     if (empty) empty.hidden = count !== 0;
   };
-  $('.filter').forEach(btn => btn.addEventListener('click', () => {
-    $('.filter').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+  filters.forEach(btn => btn.addEventListener('click', () => {
+    filters.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
     btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
     activeRegion = btn.dataset.filter || 'all';
     updateDestinations();
