@@ -4,29 +4,7 @@
   'use strict';
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var header=document.querySelector('.site-header');
-  var menu=document.querySelector('.menu-toggle');
-  var nav=document.querySelector('.site-header .nav');
-  function setMenu(open){
-    if(!menu||!nav)return;
-    nav.classList.toggle('open',!!open);
-    menu.setAttribute('aria-expanded',String(!!open));
-    menu.setAttribute('aria-label',open?'Close navigation':'Open navigation');
-    if(!nav.id)nav.id='quorista-main-navigation';
-    menu.setAttribute('aria-controls',nav.id);
-  }
-  if(menu&&nav){
-    setMenu(nav.classList.contains('open'));
-    menu.addEventListener('click',function(){setMenu(nav.classList.contains('open'));});
-    document.addEventListener('click',function(e){
-      if(nav.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target))setMenu(false);
-    });
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);menu.focus();}
-    });
-    nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
-    window.addEventListener('resize',function(){if(window.innerWidth>820)setMenu(false);},{passive:true});
-  }
+  /* Main navigation behaviour is managed by the homepage's original site script. */
   /* Pointer-following ambient light is limited to the hero and fine-pointer devices. */
   if(finePointer&&!reduce){
     var hero=document.querySelector('.hero');
