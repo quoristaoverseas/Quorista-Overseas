@@ -1,0 +1,50 @@
+/* Quorista homepage-only motion layer. Loaded exclusively by index.html. */
+:root{--qo-ease:cubic-bezier(.22,.8,.24,1)}
+html{scroll-behavior:smooth}
+@media(hover:hover) and (pointer:fine){
+  .hero .image-stack{transform:perspective(1100px) rotateX(var(--qo-hero-x,0deg)) rotateY(var(--qo-hero-y,0deg));transform-style:preserve-3d;transition:transform .22s ease-out;will-change:transform}
+  .hero-photo{transform-style:preserve-3d;backface-visibility:hidden}
+  .hero-photo-main{translate:0 0}
+  .dest-card,.path-card,.process-step,.info-card{
+    transform-style:preserve-3d;will-change:transform;
+    transition:transform .42s var(--qo-ease),box-shadow .42s var(--qo-ease),border-color .3s ease
+  }
+  .dest-card{transform:perspective(900px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
+  .path-card,.process-step,.info-card{transform:perspective(1000px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
+  .dest-card:hover,.path-card:hover,.process-step:hover,.info-card:hover{--qo-lift:-7px}
+  .dest-card::after,.path-card::after,.process-step::after,.info-card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;
+    background:radial-gradient(360px circle at var(--qo-pointer-x,50%) var(--qo-pointer-y,50%),rgba(255,255,255,.22),transparent 62%);
+    transition:opacity .25s ease;z-index:2
+  }
+  .dest-card:hover::after,.path-card:hover::after,.process-step:hover::after,.info-card:hover::after{opacity:1}
+  .btn,.nav-cta,.submit-btn,.filter,.career-tab{transition-timing-function:var(--qo-ease)}
+  .btn:active,.nav-cta:active,.submit-btn:active,.filter:active{transform:translateY(1px) scale(.975)}
+}
+.hero .hero-inner{isolation:isolate}
+.hero .image-stack{will-change:transform}
+.hero .hero-photo img{transition:transform 1s var(--qo-ease),filter .6s ease}
+.hero .hero-photo:hover img{filter:saturate(1.08)}
+.home-motion-ready .home-reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .75s var(--qo-ease),transform .75s var(--qo-ease)}
+.home-motion-ready .home-reveal.home-visible{opacity:1;transform:none}
+.home-motion-ready .home-reveal.home-delay-1{transition-delay:.1s}
+.home-motion-ready .home-reveal.home-delay-2{transition-delay:.2s}
+.home-motion-ready .home-reveal.home-delay-3{transition-delay:.3s}
+.home-focus-ring :focus-visible{outline:3px solid var(--saffron);outline-offset:4px}
+.hero .hero-facts span{transition:transform .35s var(--qo-ease),background .35s ease,border-color .35s ease}
+.hero .hero-facts span:hover{transform:translateY(-4px);background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.42)}
+.service-row{transition:background .35s ease,color .35s ease,padding .35s var(--qo-ease),border-radius .35s ease}
+.contact-links a,.intro-pills a,.scholar-tags a{transition:transform .3s var(--qo-ease),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .3s ease}
+.contact-links a:hover,.intro-pills a:hover,.scholar-tags a:hover{transform:translateY(-3px)}
+.form-shell input:not([type=checkbox]),.form-shell select,.form-shell textarea{transition:border-color .25s ease,box-shadow .25s ease,background .25s ease,transform .25s ease}
+.form-shell input:not([type=checkbox]):focus,.form-shell select:focus,.form-shell textarea:focus{transform:translateY(-1px)}
+button,a,[role=button]{-webkit-tap-highlight-color:transparent}
+@media(max-width:820px){
+  .hero .image-stack{transform:none!important}
+  .home-motion-ready .home-reveal{transform:translate3d(0,14px,0)}
+  .hero .hero-facts span:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-motion-ready .home-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .hero .image-stack,.dest-card,.path-card,.process-step,.info-card{transform:none!important;transition:none!important}
+}
