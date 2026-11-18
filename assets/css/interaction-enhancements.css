@@ -42,7 +42,7 @@ img{transition:transform 500ms var(--qe-ease),filter 350ms ease}
   .nav-cta:hover{transform:translateY(-2px)}
   .footer a:hover,.contact-links a:hover,.source-links a:hover,.link-list a:hover{opacity:.78}
 }
-@media(max-width:850px){
+@media(max-width:820px){
   .site-header .nav{transition:opacity 220ms var(--qe-ease),transform 220ms var(--qe-ease),visibility 220ms}
   .site-header .nav:not(.open){opacity:0;transform:translateY(-8px);visibility:hidden}
   .site-header .nav.open{opacity:1;transform:none;visibility:visible}
