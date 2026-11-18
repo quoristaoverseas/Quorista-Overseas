@@ -25,7 +25,7 @@
       if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);menu.focus();}
     });
     nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
-    window.addEventListener('resize',function(){if(window.innerWidth>850)setMenu(false);},{passive:true});
+    window.addEventListener('resize',function(){if(window.innerWidth>820)setMenu(false);},{passive:true});
   }
   /* Pointer-following ambient light is limited to the hero and fine-pointer devices. */
   if(finePointer&&!reduce){
