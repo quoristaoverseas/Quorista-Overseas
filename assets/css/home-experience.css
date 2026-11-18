@@ -10,13 +10,14 @@ html{scroll-behavior:smooth}
     transition:transform .42s var(--qo-ease),box-shadow .42s var(--qo-ease),border-color .3s ease
   }
   .dest-card{transform:perspective(900px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
-  .path-card,.process-step,.info-card{transform:perspective(1000px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
-  .dest-card:hover,.path-card:hover,.process-step:hover,.info-card:hover{--qo-lift:-7px}
+  .path-card,.process-step,.info-card{position:relative;transform:perspective(1000px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
+  .dest-card:hover,.path-card:hover,.process-step:hover,.info-card:hover{--qo-lift:-7px;transform:perspective(1000px) rotateX(var(--qo-tilt-x,0deg)) rotateY(var(--qo-tilt-y,0deg)) translateY(var(--qo-lift,0px))}
   .dest-card::after,.path-card::after,.process-step::after,.info-card::after{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;
     background:radial-gradient(360px circle at var(--qo-pointer-x,50%) var(--qo-pointer-y,50%),rgba(255,255,255,.22),transparent 62%);
-    transition:opacity .25s ease;z-index:2
+    transition:opacity .25s ease;z-index:0
   }
+  .dest-body,.dest-index,.path-content{position:relative;z-index:1}
   .dest-card:hover::after,.path-card:hover::after,.process-step:hover::after,.info-card:hover::after{opacity:1}
   .btn,.nav-cta,.submit-btn,.filter,.career-tab{transition-timing-function:var(--qo-ease)}
   .btn:active,.nav-cta:active,.submit-btn:active,.filter:active{transform:translateY(1px) scale(.975)}
