@@ -106,3 +106,8 @@ main section[id]{scroll-margin-top:88px}
   .faq-item,.faq-item summary,.modal,.modal-card,.modal-close,.service-row>span,.service-row>b,.process-step b{transition:none!important}
   .faq-item:hover{transform:none}
 }
+
+.qo-modal-open{overflow:hidden}
+.faq-item.qo-faq-animating p{overflow:hidden}
+.qo-pressed{transform:scale(.975)!important}
+@media(prefers-reduced-motion:reduce){.qo-pressed{transform:none!important}}
