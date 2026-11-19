@@ -331,6 +331,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 .career-tab strong{display:block;font:800 1.15rem 'Manrope';color:var(--indigo)}
 .career-tab small{color:var(--muted);font-size:.84rem}
 .career-tab:hover{border-color:var(--violet);transform:translateY(-3px)}
+.career-tab:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
 .career-tab.active{background:var(--indigo);border-color:var(--indigo)}
 .career-tab.active strong{color:#fff}.career-tab.active small{color:var(--lilac)}
 .career-panel{display:none;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
@@ -462,7 +463,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
           <button class="career-tab active" data-tab="fulltime" id="fulltime-tab" role="tab" aria-selected="true" aria-controls="fulltime"><strong>💼 Full-time opportunities</strong><small>Full-time employment · 7 role categories</small></button>
           <button class="career-tab" data-tab="internship" id="internship-tab" role="tab" aria-selected="false" aria-controls="internship"><strong>🌱 Internship opportunities</strong><small>Unpaid · Learning-oriented · 7 role categories</small></button>
         </div>
-        <div class="career-panel active" id="fulltime" role="tabpanel" aria-labelledby="fulltime-tab">
+        <div class="career-panel active" id="fulltime" role="tabpanel" aria-labelledby="fulltime-tab" tabindex="0">
           <div>
             <p class="panel-note warm" style="margin-bottom:16px">💼 <b>Full-time employment</b> — these are employment opportunities, separate from the unpaid internship programme. Role-specific terms and compensation will be discussed during the recruitment process.</p>
             <div class="role-list"><article class="role"><span class="badge warm">FULL-TIME OPPORTUNITY</span><h4>Business Development &amp; Lead Management</h4><p>Coordinate day-to-day operations, supervise team workflows, manage Quorista Overseas’ social media accounts and publishing, monitor lead flow, resolve routine operational issues and report to the Founder. This role oversees operational coordination across the organisation.</p></article>
@@ -496,7 +497,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
             </form>
           </div>
         </div>
-        <div class="career-panel" id="internship" role="tabpanel" aria-labelledby="internship-tab">
+        <div class="career-panel" id="internship" role="tabpanel" aria-labelledby="internship-tab" tabindex="0">
           <div>
             <p class="panel-note warm" style="margin-bottom:16px">🌱 <b>Unpaid · Learning-oriented</b> — these internships provide practical exposure and structured learning. They do not include a salary or stipend.</p>
             <section class="internship-benefits" aria-labelledby="internship-benefits-title">
@@ -508,7 +509,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
               </div>
               <p class="benefit-condition">Both benefits are subject to successful completion and meeting Quorista Overseas’ internship requirements and performance conditions.</p>
             </section>
-            <div class="role-list"><article class="role"><span class="badge teal">INTERNSHIP · UNPAID · 1 OPENING</span><h4>Business Development &amp; Lead Management Intern</h4><p>Coordinate day-to-day operations, supervise team workflows, manage Quorista Overseas’ social media accounts and publishing, monitor lead flow, resolve routine operational issues and report to the Founder. This role oversees operational coordination across the organisation.</p></article>
+            <div class="role-list"><article class="role"><span class="badge teal">INTERNSHIP · UNPAID · 1 OPENING</span><h4>Business Development &amp; Lead Management Intern</h4><p>Support day-to-day business operations by coordinating assigned tasks, maintaining lead and activity records, assisting with social media scheduling and publishing, monitoring follow-ups and preparing updates for the Business Development & Lead Management team. Work under the team lead’s supervision and help keep internal workflows organised.</p></article>
 <article class="role"><span class="badge teal">INTERNSHIP · UNPAID · 2 OPENINGS</span><h4>Content Creator Intern</h4><p>Represent Quorista Overseas on camera. Plan and record face-to-camera videos covering general immigration updates, QO services, overseas education opportunities and relevant study-abroad or international-travel information. Applicants should be confident, articulate and comfortable presenting on camera.</p></article>
 <article class="role"><span class="badge teal">INTERNSHIP · UNPAID · 1 OPENING</span><h4>Video Editing &amp; Graphic Design Intern</h4><p>Edit and polish videos recorded by content creators, produce reels and short-form videos, and design static posts, graphics and other visual materials to strengthen QO’s social media presence. A portfolio or samples of previous work are welcome.</p></article>
 <article class="role"><span class="badge teal">INTERNSHIP · UNPAID · 1 OPENING</span><h4>Study Abroad Sales &amp; Marketing Intern</h4><p>Identify prospective students through social media, organise and maintain lead lists, make initial contact, understand study-abroad interests, explain Quorista Overseas’ services and connect interested prospects with the Study Abroad Counselling team.</p></article>
