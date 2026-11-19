@@ -527,7 +527,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
                 <label>Phone / WhatsApp<input type="tel" name="phone" required autocomplete="tel" placeholder="+91 ..."></label>
                 <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
                 <label>Position applying for<select name="role" id="careerRole" required><option value="">Select a position</option><option>Business Development & Lead Management Intern</option><option>Content Creator Intern</option><option>Video Editing & Graphic Design Intern</option><option>Study Abroad Sales & Marketing Intern</option><option>International Tourism Sales & Marketing Intern</option><option>Study Abroad Counsellor Intern</option><option>International Tourism Counsellor Intern</option></select></label>
-                <label>College / University<input type="text" name="college" required placeholder="Your institution (if applicable)"></label>
+                <label>College / University<input type="text" name="college" placeholder="Your institution (if applicable)"></label>
                 <label>Course &amp; year<input type="text" name="course" placeholder="Your qualification / current course"></label>
                 <label>Duration preferred<select name="duration" required><option value="">Select duration</option><option>1 month</option><option>2 months</option><option>3 months</option><option>6 months</option></select></label>
                 <label>Preferred mode<select name="mode"><option>Remote</option><option>On-site</option><option>Either</option></select></label>
@@ -672,33 +672,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   }
 
   /* ---------- role-specific application guidance ---------- */
-  const careerRole = $('#careerRole'), careerMessage = $('#careerMessage');
-  const roleGuidance = {
-    'Business Development & Lead Management Intern': 'Describe your coordination, leadership, operations, spreadsheet, communication or social media management skills.',
-    'Content Creator Intern': 'Tell us about your on-camera confidence, speaking languages, presentation skills and sample video or social profile links.',
-    'Video Editing & Graphic Design Intern': 'List the editing/design tools you use and share links to video, reel or graphic design samples.',
-    'Study Abroad Sales & Marketing Intern': 'Describe your communication, prospecting, outreach or sales skills and your interest in overseas education.',
-    'International Tourism Sales & Marketing Intern': 'Describe your communication, prospecting, outreach or sales skills and your interest in international travel and tourism.',
-    'Study Abroad Counsellor Intern': 'Describe your research, communication and documentation skills, and familiarity with universities, admissions or student visa processes.',
-    'International Tourism Counsellor Intern': 'Describe your research, communication and documentation skills, and familiarity with destinations, travel planning or tourist visa processes.'
-  };
-  if (careerRole && careerMessage) careerRole.addEventListener('change', () => {
-    careerMessage.placeholder = roleGuidance[careerRole.value] || 'Tell us about your relevant skills, experience, interests and why you are applying.';
-  });
-
-  /* ---------- career opportunity tabs ---------- */
-  const careerTabs = $('.career-tab');
-  const careerPanels = $('.career-panel');
-  careerTabs.forEach(tab => tab.addEventListener('click', () => {
-    careerTabs.forEach(item => {
-      const active = item === tab;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-selected', String(active));
-    });
-    careerPanels.forEach(panel => panel.classList.toggle('active', panel.id === tab.dataset.tab));
-  }));
-
-  /* ---------- role-specific application guidance ---------- */
   const roleGuidance = {
     'Business Development & Lead Management': 'Describe your coordination, leadership, operations, spreadsheet, communication or social media management skills.',
     'Business Development & Lead Management Intern': 'Describe your coordination, leadership, operations, spreadsheet, communication or social media management skills.',
@@ -715,13 +688,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     'International Tourism Counsellor': 'Describe your research, communication and documentation skills, and familiarity with destinations, travel planning or tourist visa processes.',
     'International Tourism Counsellor Intern': 'Describe your research, communication and documentation skills, and familiarity with destinations, travel planning or tourist visa processes.'
   };
-  ['careerRole','careerRoleFullTime'].forEach(id => {
+
+  ['careerRole', 'careerRoleFullTime'].forEach(id => {
     const select = document.getElementById(id);
     const message = document.getElementById(id === 'careerRole' ? 'careerMessage' : 'careerMessageFullTime');
-    if (select && message) select.addEventListener('change', () => {
-      message.placeholder = roleGuidance[select.value] || 'Tell us about your relevant skills, experience and why you are applying.';
+    if (select && message) {
+      const updateGuidance = () => {
+        message.placeholder = roleGuidance[select.value] || 'Tell us about your relevant skills, experience and why you are applying.';
+      };
+      select.addEventListener('change', updateGuidance);
+      updateGuidance();
+    }
+  });
+
+  /* ---------- accessible career opportunity tabs ---------- */
+  const careerTabs = $$('.career-tab');
+  const careerPanels = $$('.career-panel');
+
+  const activateCareerTab = tab => {
+    careerTabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    careerPanels.forEach(panel => {
+      const active = panel.id === tab.dataset.tab;
+      panel.classList.toggle('active', active);
+      panel.hidden = !active;
+    });
+  };
+
+  careerTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateCareerTab(tab));
+    tab.addEventListener('keydown', event => {
+      let nextIndex = null;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % careerTabs.length;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + careerTabs.length) % careerTabs.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = careerTabs.length - 1;
+      if (nextIndex !== null) {
+        event.preventDefault();
+        careerTabs[nextIndex].focus();
+        activateCareerTab(careerTabs[nextIndex]);
+      }
     });
   });
+
+  if (careerTabs.length) {
+    const initiallySelected = careerTabs.find(tab => tab.getAttribute('aria-selected') === 'true') || careerTabs[0];
+    activateCareerTab(initiallySelected);
+  }
 
   /* ---------- forms (enquiry + careers) ---------- */
   $$('form.ajax-form').forEach(form => {
