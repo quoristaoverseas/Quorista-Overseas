@@ -427,6 +427,84 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 .modal-image.img-missing{min-height:420px}
 @media(max-width:820px){.modal-image.img-missing{min-height:200px}}
 
+
+/* ===== Careers page refinement — 2026 ===== */
+.page-hero.careers-hero{min-height:620px;padding:154px 0 92px;display:flex;align-items:center;background:radial-gradient(ellipse at 78% 20%,rgba(91,61,245,.38),transparent 36%),linear-gradient(125deg,#070427 0%,#10065c 58%,#241078 100%)}
+.careers-hero .hero-grid{background-size:52px 52px;opacity:.7}
+.careers-hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.75fr);gap:clamp(34px,6vw,88px);align-items:center;position:relative}
+.careers-hero-copy{max-width:700px}
+.careers-hero h1{font-size:clamp(3rem,6.5vw,5.4rem);line-height:1.02;letter-spacing:-.055em;margin:0}
+.careers-hero h1 em{display:inline-block;margin-top:8px}
+.careers-hero p.sub{max-width:610px;font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.75;margin-top:24px}
+.careers-hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:32px}
+.careers-hero-actions .btn{padding:15px 24px}
+.careers-hero-link{color:rgba(255,255,255,.88);font-weight:700;font-size:.92rem;transition:color .2s}
+.careers-hero-link:hover{color:var(--saffron)}
+.careers-hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+.careers-hero-tags span{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);border-radius:999px;padding:8px 13px;color:rgba(255,255,255,.8);font-size:.78rem;font-weight:700}
+.careers-hero-panel{position:relative;padding:34px;border:1px solid rgba(255,255,255,.2);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.055));box-shadow:0 30px 80px rgba(0,0,0,.24);backdrop-filter:blur(14px);overflow:hidden}
+.careers-hero-panel::after{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,176,32,.2);border-radius:50%;right:-82px;top:-82px;box-shadow:0 0 0 24px rgba(255,176,32,.035),0 0 0 48px rgba(255,176,32,.025);pointer-events:none}
+.hero-panel-top{display:flex;align-items:center;gap:12px;color:var(--saffron);font:800 .66rem 'Manrope';letter-spacing:.19em}
+.hero-panel-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--saffron);color:var(--ink);font:800 1.1rem 'Manrope';letter-spacing:-.05em}
+.careers-hero-panel h2{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.12;margin:28px 0 12px;color:#fff}
+.careers-hero-panel>p{font-size:.92rem;line-height:1.7;color:rgba(255,255,255,.7);max-width:320px}
+.hero-panel-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.hero-panel-stats div{padding:17px 16px;border-radius:16px;background:rgba(7,4,39,.28);border:1px solid rgba(255,255,255,.12)}
+.hero-panel-stats strong{display:block;color:var(--saffron);font:800 2.25rem/1 'Manrope';letter-spacing:-.05em}
+.hero-panel-stats span{display:block;margin-top:7px;color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700}
+.hero-panel-foot{display:flex;align-items:center;gap:9px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.65);font-size:.76rem}
+.hero-panel-dot{width:7px;height:7px;border-radius:50%;background:#55d6b5;box-shadow:0 0 0 5px rgba(85,214,181,.13)}
+#openings{padding-top:94px}
+#openings .section-head{margin-bottom:38px}
+#openings .section-head h2{letter-spacing:-.045em}
+.career-tabs{gap:14px;margin-bottom:30px}
+.career-tab{position:relative;min-height:112px;padding:22px 24px 20px 76px;border-radius:20px;box-shadow:0 10px 28px -24px rgba(16,6,92,.5)}
+.career-tab::before{position:absolute;left:22px;top:25px;display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--mist);font-size:1.1rem}
+.career-tab[data-tab="fulltime"]::before{content:"↗"}
+.career-tab[data-tab="internship"]::before{content:"✦"}
+.career-tab strong{font-size:1.12rem}
+.career-tab small{display:block;margin-top:5px}
+.career-tab.active{box-shadow:0 16px 34px -18px rgba(16,6,92,.7)}
+.career-tab.active::before{background:rgba(255,176,32,.16);color:var(--saffron)}
+.career-panel.active{gap:30px}
+.role-list{gap:12px}
+.role{position:relative;padding:23px 24px 22px 27px;border-radius:18px;box-shadow:0 7px 24px -23px rgba(16,6,92,.45)}
+.role::before{content:"";position:absolute;left:0;top:20px;bottom:20px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--violet),var(--saffron));opacity:.55;transition:opacity .25s}
+.role:hover{transform:translateY(-3px);border-color:rgba(91,61,245,.38);box-shadow:0 18px 36px -26px rgba(16,6,92,.55)}
+.role:hover::before{opacity:1}
+.role h4{font-size:1.08rem;line-height:1.35}
+.role p{line-height:1.7}
+.form-shell.career-form{position:sticky;top:96px;padding:30px;border-radius:24px;box-shadow:0 20px 55px -35px rgba(16,6,92,.45)}
+.form-top{padding-bottom:17px;border-bottom:1px solid var(--line)}
+.form-top span{font-size:.75rem}
+.form-top small{letter-spacing:.1em}
+.career-form label{font-size:.78rem}
+.career-form .form-grid{gap:14px;margin-bottom:14px}
+.career-form input:not([type=checkbox]),.career-form select,.career-form textarea{padding:12px 13px;border-radius:11px;font-size:.9rem}
+.career-form .consent{font-size:.78rem;line-height:1.55}
+.career-form .submit-btn{border-radius:12px;padding:15px 18px}
+.internship-benefits{border:1px solid rgba(255,255,255,.12)}
+@media(max-width:1000px){
+ .careers-hero-inner{grid-template-columns:1fr;gap:38px}
+ .careers-hero-panel{max-width:560px}
+ .form-shell.career-form{position:relative;top:auto}
+}
+@media(max-width:820px){
+ .page-hero.careers-hero{min-height:auto;padding:132px 0 76px}
+ #openings{padding-top:76px}
+}
+@media(max-width:560px){
+ .careers-hero h1{font-size:clamp(2.7rem,13vw,4rem)}
+ .careers-hero-actions{align-items:flex-start;gap:18px;flex-direction:column}
+ .careers-hero-panel{padding:25px 22px}
+ .career-tab{padding:18px 16px 18px 65px;min-height:94px}
+ .career-tab::before{left:15px;top:22px}
+ .role{padding:20px 19px 19px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+ .careers-hero .hero-orb{animation:none}
+}
+
 </style>
 </head>
 <body>
@@ -447,12 +525,29 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero careers-hero">
       <div class="hero-grid"></div><div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div>
-      <div class="container">
-        <p class="eyebrow light">CAREERS AT QUORISTA</p>
-        <h1>Help people <em>go beyond.</em></h1>
-        <p class="sub">Build practical experience across business operations, content creation, digital marketing, lead generation and international counselling. Explore current full-time and learning-oriented internship opportunities.</p>
+      <div class="container careers-hero-inner">
+        <div class="careers-hero-copy">
+          <p class="eyebrow light">CAREERS AT QUORISTA OVERSEAS</p>
+          <h1>Build what’s next.<br><em>Go beyond.</em></h1>
+          <p class="sub">Be part of a team helping people explore opportunities across borders. Discover roles in business operations, content, marketing, study abroad and international tourism.</p>
+          <div class="careers-hero-actions">
+            <a class="btn btn-primary" href="#openings">Explore opportunities <span aria-hidden="true">↓</span></a>
+            <a class="careers-hero-link" href="https://wa.me/916395672828" target="_blank" rel="noopener">Have a question? Talk to us <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="careers-hero-tags"><span>Full-time roles</span><span>Internship programme</span><span>Study abroad &amp; tourism</span></div>
+        </div>
+        <aside class="careers-hero-panel" aria-label="Careers at Quorista overview">
+          <div class="hero-panel-top"><span class="hero-panel-mark">Q</span><span>YOUR NEXT CHAPTER</span></div>
+          <h2>Find a place to<br><em>make an impact.</em></h2>
+          <p>Choose the opportunity that matches your skills, interests and experience.</p>
+          <div class="hero-panel-stats">
+            <div><strong>07</strong><span>Full-time roles</span></div>
+            <div><strong>07</strong><span>Internship roles</span></div>
+          </div>
+          <div class="hero-panel-foot"><span class="hero-panel-dot"></span> Two opportunity tracks. One place to begin.</div>
+        </aside>
       </div>
     </section>
 
