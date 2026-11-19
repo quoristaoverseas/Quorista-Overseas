@@ -743,9 +743,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
         form.submit();
       } catch (err) {
         console.error('Career application submission failed:', err);
+        btn.disabled = false;
         status.classList.add('err');
-        status.textContent = 'We could not send your application right now. Please try again or contact us on WhatsApp.';
-      } finally { btn.disabled = false; }
+        status.textContent = 'We could not start your application submission. Please try again or contact us on WhatsApp.';
+      }
     });
   });
 })();
