@@ -30,16 +30,59 @@
     .secondary{border:1px solid rgba(255,255,255,.28);color:#fff}
     .foot{margin-top:38px;color:rgba(255,255,255,.45);font-size:.78rem;letter-spacing:.04em}
     @media(max-width:480px){.brand{margin-bottom:34px}.actions{flex-direction:column}.btn{width:100%}}
+
+    /* Refined confirmation experience */
+    body{position:relative;isolation:isolate;overflow-x:hidden;background:radial-gradient(ellipse at 82% 12%,rgba(91,61,245,.34),transparent 34%),radial-gradient(ellipse at 8% 90%,rgba(255,107,87,.16),transparent 36%),linear-gradient(145deg,#070427,#10065c 62%,#170b68)}
+    body::before,body::after{content:"";position:fixed;z-index:-1;border:1px solid rgba(255,255,255,.08);border-radius:50%;pointer-events:none}
+    body::before{width:520px;height:520px;right:-260px;top:-280px;box-shadow:0 0 0 35px rgba(255,255,255,.018),0 0 0 75px rgba(255,255,255,.014)}
+    body::after{width:360px;height:360px;left:-220px;bottom:-220px;box-shadow:0 0 0 28px rgba(255,176,32,.025)}
+    .card{width:min(760px,100%);padding:clamp(28px,6vw,58px);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.19);box-shadow:0 40px 110px rgba(0,0,0,.32);text-align:center}
+    .card-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:48px;text-align:left}
+    .brand{margin:0;font-size:1.35rem}
+    .secure-label{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(85,214,181,.28);border-radius:999px;color:#a5f0dc;font:800 .62rem 'Manrope',sans-serif;letter-spacing:.13em;white-space:nowrap}
+    .secure-label span{display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#55d6b5;color:#071f28;font-size:.68rem}
+    .check-wrap{width:104px;height:104px;margin:0 auto 26px;display:grid;place-items:center;border-radius:50%;background:rgba(255,176,32,.09);border:1px solid rgba(255,176,32,.2)}
+    .check{width:72px;height:72px;margin:0;border-radius:50%;font-size:2.2rem;box-shadow:0 12px 30px rgba(255,176,32,.22)}
+    .eyebrow{font-size:.68rem;margin-bottom:18px}
+    h1{font-size:clamp(2.5rem,7vw,4.15rem);line-height:1.05;letter-spacing:-.055em;margin-bottom:20px}
+    .message{max-width:510px;margin:0 auto 30px;font-size:1.02rem;line-height:1.8}
+    .next{max-width:540px;margin:0 auto 32px;padding:20px 22px;border-radius:18px;background:rgba(7,4,39,.3);border:1px solid rgba(255,255,255,.12);text-align:left}
+    .next-label{display:block;margin-bottom:7px;color:var(--saffron);font:800 .65rem 'Manrope',sans-serif;letter-spacing:.17em}
+    .next-copy{display:block;color:rgba(255,255,255,.84);font-size:.92rem;line-height:1.7}
+    .actions{gap:12px}
+    .btn{min-height:52px;padding:14px 23px;font-size:.9rem}
+    .primary{box-shadow:0 12px 28px rgba(255,176,32,.2)}
+    .secondary{background:rgba(255,255,255,.035)}
+    .secondary:hover{border-color:var(--saffron);background:rgba(255,255,255,.08)}
+    .foot{margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:.68rem;letter-spacing:.13em}
+    @media(max-width:520px){
+      body{padding:16px}
+      .card{padding:26px 21px;border-radius:24px}
+      .card-head{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:38px}
+      .brand{font-size:1.22rem}
+      .secure-label{font-size:.58rem}
+      .check-wrap{width:92px;height:92px}
+      .check{width:64px;height:64px}
+      .next{padding:17px}
+      .actions{flex-direction:column}
+      .btn{width:100%}
+      .foot{font-size:.6rem;line-height:1.8}
+    }
+    @media(prefers-reduced-motion:reduce){.btn{transition:none}}
+
   </style>
 </head>
 <body>
   <main class="card">
-    <a class="brand" href="index.html" aria-label="Quorista Overseas home">Quorista <span>Overseas</span></a>
-    <div class="check" aria-hidden="true">✓</div>
+    <div class="card-head">
+      <a class="brand" href="index.html" aria-label="Quorista Overseas home">Quorista <span>Overseas</span></a>
+      <span class="secure-label"><span aria-hidden="true">✓</span> SUBMISSION CONFIRMED</span>
+    </div>
+    <div class="check-wrap"><div class="check" aria-hidden="true">✓</div></div>
     <p class="eyebrow">ENQUIRY SUBMITTED</p>
     <h1>Thank you for<br><span>reaching out.</span></h1>
     <p class="message">Your enquiry has been submitted to Quorista Overseas. We appreciate your interest and look forward to helping you explore your next opportunity beyond borders.</p>
-    <div class="next">Our team will review your details and get in touch using your preferred contact method.</div>
+    <div class="next"><span class="next-label">WHAT HAPPENS NEXT</span><span class="next-copy">Our team will review your details and get in touch using your preferred contact method.</span></div>
     <div class="actions">
       <a class="btn primary" href="index.html">Back to homepage <span aria-hidden="true">&nbsp;→</span></a>
       <a class="btn secondary" href="https://wa.me/916395672828" target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
@@ -54,7 +97,8 @@
       document.querySelector('.eyebrow').textContent = 'APPLICATION SUBMITTED';
       document.querySelector('h1').innerHTML = 'Thank you for<br><span>applying to Quorista Overseas.</span>';
       document.querySelector('.message').textContent = 'Your career application has been submitted to Quorista Overseas. Thank you for your interest in joining our team.';
-      document.querySelector('.next').textContent = 'Our team will review your application and contact you using the details you provided.';
+      document.querySelector('.next-copy').textContent = 'Our team will review your application and contact you using the details you provided.';
+      document.querySelector('.next-label').textContent = 'WHAT HAPPENS NEXT';
       const homeButton = document.querySelector('.actions .primary');
       homeButton.href = 'careers.html';
       homeButton.innerHTML = 'Back to careers <span aria-hidden="true">&nbsp;→</span>';
