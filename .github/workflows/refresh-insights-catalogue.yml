@@ -56,7 +56,7 @@ jobs:
               parser.feed(html)
               meta = parser.meta
               canonical = meta.get('og:url') or f"{BASE}/{file.parent.as_posix()}/"
-              url = canonical.replace(BASE + '/', '', 1)
+              url = '/' + canonical.replace(BASE + '/', '', 1).lstrip('/')
               if not url.endswith('/'):
                   url += '/'
               title = parser.title.strip()
