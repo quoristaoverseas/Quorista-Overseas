@@ -526,6 +526,37 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
 .faq-bottom{max-width:900px;margin:30px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-weight:700}
 @media(max-width:600px){.faq-tools{grid-template-columns:1fr;margin-top:28px}.faq-tools input{min-height:50px}#faqCount{justify-self:end}.faq-item{padding-inline:17px}.faq-item summary{font-size:.94rem;padding-block:18px}.faq-item p{font-size:.91rem;padding-right:0}.faq-bottom{align-items:stretch;flex-direction:column}.faq-bottom .btn{justify-content:center}}
 
+/* Quorista Insights carousel */
+.insights-section{background:var(--mist);padding:100px 0;overflow:hidden}
+.insights-section .section-head{margin-bottom:34px}
+.insights-section .section-head p:not(.eyebrow){max-width:500px}
+.insights-slider{position:relative}
+.insights-viewport{overflow:hidden;padding:8px 2px 28px}
+.insights-track{display:flex;gap:22px;transition:transform .65s cubic-bezier(.22,.75,.25,1);will-change:transform}.insights-track[data-count="1"]{justify-content:center}.insights-track[data-count="1"] .insights-slide{flex-basis:min(100%,420px)}.insights-track[data-count="2"] .insights-slide{flex-basis:calc((100% - 22px)/2)}
+.insights-slide{flex:0 0 calc((100% - 44px)/3);min-width:0}
+.insights-card{height:100%;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid rgba(16,6,92,.09);border-radius:22px;box-shadow:0 18px 42px -30px rgba(16,6,92,.35);transition:transform .25s,box-shadow .25s}
+.insights-card:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(16,6,92,.42)}
+.insights-card-image{display:block;aspect-ratio:16/9;overflow:hidden;background:#e7e1f7}
+.insights-card-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.insights-card:hover .insights-card-image img{transform:scale(1.045)}
+.insights-card-content{display:flex;flex:1;flex-direction:column;padding:22px}
+.insights-card-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:11px;color:var(--muted);font-size:.76rem;font-weight:700}
+.insights-card-category{padding:4px 9px;border-radius:99px;background:#f0ecfc;color:#4e35cf}
+.insights-card h3{font:800 1.13rem/1.32 'Manrope',sans-serif;letter-spacing:-.025em;color:var(--ink);margin:0 0 10px}
+.insights-card p{font-size:.88rem;color:var(--muted);margin:0 0 18px}
+.insights-card-link{margin-top:auto;color:var(--violet);font-weight:800;font-size:.88rem}
+.insights-controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:8px}
+.insights-arrows{display:flex;gap:9px}
+.insights-arrow{width:43px;height:43px;border:1px solid rgba(16,6,92,.18);border-radius:50%;background:#fff;color:var(--indigo);font-size:1.2rem;cursor:pointer;transition:.2s}
+.insights-arrow:hover{background:var(--indigo);color:#fff;transform:translateY(-2px)}
+.insights-arrow:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.insights-view-all{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:999px;background:var(--indigo);color:#fff;font-weight:800;font-size:.9rem;transition:.25s}
+.insights-view-all:hover{transform:translateY(-2px);box-shadow:0 12px 25px -12px rgba(16,6,92,.7)}
+.insights-empty-home{padding:28px;border-radius:18px;background:#fff;color:var(--muted);text-align:center}
+@media(max-width:900px){.insights-section{padding:82px 0}.insights-slide{flex-basis:calc((100% - 22px)/2)}}
+@media(max-width:620px){.insights-section{padding:70px 0}.insights-slide,.insights-track[data-count="2"] .insights-slide{flex-basis:100%}.insights-card-content{padding:19px}.insights-controls{align-items:center}}
+@media(prefers-reduced-motion:reduce){.insights-track,.insights-card,.insights-card-image img{transition:none!important}}
+
 </style>
   <link rel="stylesheet" href="assets/css/enquiry-form.css">
   <script defer src="assets/js/enquiry-form.js"></script>
@@ -784,6 +815,22 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     </section>
 
 
+
+    <!-- QUORISTA INSIGHTS: latest articles carousel -->
+    <section class="insights-section" aria-labelledby="insights-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">IDEAS • GUIDES • UPDATES</p><h2 id="insights-title">Quorista <em>Insights.</em></h2></div>
+          <p>Explore practical study abroad guides, destination research, visa updates and international travel insights to help you make informed decisions.</p>
+        </div>
+        <div class="insights-slider" id="insightsSlider" aria-roledescription="carousel" aria-label="Latest Quorista articles">
+          <div class="insights-viewport"><div class="insights-track" id="insightsTrack" data-count="1">
+            <article class="insights-slide"><div class="insights-card"><a class="insights-card-image" href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/"><img src="assets/editorial/students.jpg" alt="Students on an international university campus" loading="lazy"></a><div class="insights-card-content"><div class="insights-card-meta"><span class="insights-card-category">Study Abroad</span><time datetime="2026-11-25">25 Nov 2026</time><span>8 min read</span></div><h3><a href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/">Study Abroad in 2027: How Indian Students Can Choose Beyond the Big Four</a></h3><p>A practical framework to compare destinations by course fit, costs, eligibility, visa rules and student experience.</p><a class="insights-card-link" href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/">Read article →</a></div></div></article>
+          </div></div>
+          <div class="insights-controls"><a class="insights-view-all" href="insights/">View all articles <span>→</span></a><div class="insights-arrows"><button class="insights-arrow" type="button" id="insightsPrev" aria-label="Previous articles" disabled>‹</button><button class="insights-arrow" type="button" id="insightsNext" aria-label="Next articles" disabled>›</button></div></div>
+        </div>
+      </div>
+    </section>
     <!-- FAQ: clear answers before an enquiry -->
     <section id="faq" class="faq-section section-light">
       <div class="container">
@@ -1094,6 +1141,52 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
     count.textContent=visible+' '+(visible===1?'answer':'answers');
     empty.hidden=visible!==0;
   });
+})();
+</script>
+
+
+<script>
+/* Quorista Insights feed + auto-sliding carousel */
+(() => {
+  const track=document.getElementById('insightsTrack');
+  const slider=document.getElementById('insightsSlider');
+  if(!track||!slider)return;
+  const prev=document.getElementById('insightsPrev'),next=document.getElementById('insightsNext');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index=0,timer=null,items=[];
+  const visibleCount=()=>window.innerWidth<=620?1:window.innerWidth<=900?2:3;
+  const maxIndex=()=>Math.max(0,track.children.length-visibleCount());
+  const step=()=>{const card=track.querySelector('.insights-slide');return card?card.getBoundingClientRect().width+22:0;};
+  const update=()=>{index=Math.min(index,maxIndex());track.style.transform='translateX('+(-index*step())+'px)';if(prev)prev.disabled=index===0;if(next)next.disabled=index===maxIndex();};
+  const stop=()=>{if(timer){clearInterval(timer);timer=null;}};
+  const start=()=>{stop();if(reduced||maxIndex()<1)return;timer=setInterval(()=>{index=index>=maxIndex()?0:index+1;update();},5000);};
+  const makeCard=item=>{
+    const slide=document.createElement('article');slide.className='insights-slide';
+    const card=document.createElement('div');card.className='insights-card';
+    const imageLink=document.createElement('a');imageLink.className='insights-card-image';imageLink.href=item.url;
+    const image=document.createElement('img');image.src=item.image;image.alt=item.imageAlt||item.title;image.loading='lazy';imageLink.append(image);
+    const content=document.createElement('div');content.className='insights-card-content';
+    const meta=document.createElement('div');meta.className='insights-card-meta';
+    const category=document.createElement('span');category.className='insights-card-category';category.textContent=item.category||'Insights';
+    const date=document.createElement('time');date.dateTime=item.datePublished||'';date.textContent=item.datePublished?new Date(item.datePublished+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
+    const read=document.createElement('span');read.textContent=item.readTime||'';meta.append(category,date,read);
+    const h3=document.createElement('h3'),title=document.createElement('a');title.href=item.url;title.textContent=item.title;h3.append(title);
+    const desc=document.createElement('p');desc.textContent=item.shortDescription||item.description||'';
+    const link=document.createElement('a');link.className='insights-card-link';link.href=item.url;link.textContent='Read article →';
+    content.append(meta,h3,desc,link);card.append(imageLink,content);slide.append(card);return slide;
+  };
+  fetch('insights/articles.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('feed');return r.json();}).then(data=>{
+    if(!Array.isArray(data)||!data.length)return;
+    items=data.sort((a,b)=>(b.datePublished||'').localeCompare(a.datePublished||''));
+    track.dataset.count=String(items.length);
+    track.replaceChildren(...items.map(makeCard));index=0;update();start();
+  }).catch(()=>{update();});
+  prev?.addEventListener('click',()=>{stop();index=Math.max(0,index-1);update();start();});
+  next?.addEventListener('click',()=>{stop();index=index>=maxIndex()?0:index+1;update();start();});
+  slider.addEventListener('mouseenter',stop);slider.addEventListener('mouseleave',start);
+  slider.addEventListener('focusin',stop);slider.addEventListener('focusout',start);
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+  window.addEventListener('resize',()=>{update();start();},{passive:true});
 })();
 </script>
 
