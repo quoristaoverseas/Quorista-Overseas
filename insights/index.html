@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10065c">
   <title>Quorista Insights | Study Abroad, Visa Updates & International Travel</title>
-  <meta name="description" content="Explore Quorista Overseas insights, practical study abroad guides, visa and immigration updates, destination research and international travel articles for Indian students and travellers.">
+  <meta name="description" content="Explore practical study abroad guides, visa and immigration explainers, destination research and international travel insights for Indian students and travellers.">
   <meta name="keywords" content="study abroad articles, visa updates India, international education guides, study abroad for Indian students, destination guides, Quorista Insights">
   <link rel="canonical" href="https://quoristaoverseas.in/insights/">
   <meta property="og:type" content="website">
@@ -14,43 +14,112 @@
   <meta property="og:description" content="Practical guides, research and updates for informed international education and travel decisions.">
   <meta property="og:url" content="https://quoristaoverseas.in/insights/">
   <meta property="og:image" content="https://quoristaoverseas.in/assets/editorial/students.jpg">
-  <link rel="stylesheet" href="../assets/css/home-experience.css?v=20261118">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
   <style>
-    :root{--ink:#070427;--indigo:#10065c;--violet:#5b3df5;--saffron:#ffb020;--cream:#fbf7ef;--mist:#f0ecfc;--text:#1b1740;--muted:#5d5a7e;--grad:linear-gradient(135deg,#5b3df5 0%,#ff6b57 60%,#ffb020 100%)}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:100px}
-    body{margin:0;background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7}
+    :root{--ink:#070427;--indigo:#10065c;--violet:#5b3df5;--saffron:#ffb020;--coral:#ff6b57;--cream:#fbf7ef;--mist:#f0ecfc;--text:#1b1740;--muted:#65617d;--line:rgba(16,6,92,.12);--grad:linear-gradient(120deg,#5b3df5 0%,#ff6b57 60%,#ffb020 100%);--shadow:0 24px 60px -34px rgba(16,6,92,.38)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:88px;overflow-x:clip}
+    body{font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
     a{color:inherit;text-decoration:none}
-    .insights-hero{padding:150px 0 72px;background:radial-gradient(850px 430px at 90% 0%,rgba(91,61,245,.28),transparent 65%),var(--ink);color:#fff}
-    .insights-hero .eyebrow{color:var(--saffron)}
-    .insights-hero h1{font:800 clamp(2.5rem,5vw,4.4rem)/1.08 Manrope,sans-serif;letter-spacing:-.045em;max-width:850px;margin:0 0 20px}
-    .insights-hero h1 em{font-family:'Playfair Display',serif;color:var(--saffron);font-weight:600}
-    .insights-hero p{color:rgba(255,255,255,.76);font-size:1.08rem;max-width:720px}
-    .insights-main{padding:76px 0 110px}
-    .insights-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:34px}
-    .insights-heading h2{font:800 clamp(1.8rem,3vw,2.5rem)/1.15 Manrope,sans-serif;letter-spacing:-.035em;margin:0}
-    .insights-heading p{color:var(--muted);margin:10px 0 0}
-    .insights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
-    .insight-card{background:#fff;border:1px solid rgba(16,6,92,.09);border-radius:22px;overflow:hidden;box-shadow:0 18px 45px -30px rgba(16,6,92,.35);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;min-width:0}
-    .insight-card:hover{transform:translateY(-6px);box-shadow:0 24px 55px -28px rgba(16,6,92,.4)}
-    .insight-card-image{aspect-ratio:16/9;overflow:hidden;background:#e8e2fa}
-    .insight-card-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .insight-card:hover .insight-card-image img{transform:scale(1.045)}
-    .insight-card-content{padding:23px;display:flex;flex:1;flex-direction:column}
-    .insight-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.78rem;font-weight:700;margin-bottom:12px}
-    .insight-category{color:#4e35cf;background:#f0ecfc;border-radius:99px;padding:5px 10px}
-    .insight-card h3{font:800 1.22rem/1.3 Manrope,sans-serif;letter-spacing:-.025em;margin:0 0 12px;color:var(--ink)}
-    .insight-card p{color:var(--muted);font-size:.92rem;margin:0 0 20px}
-    .insight-read{margin-top:auto;color:#5137d7;font-weight:800;font-size:.9rem}
-    .insight-read span{display:inline-block;transition:transform .2s}
-    .insight-card:hover .insight-read span{transform:translateX(4px)}
-    .insights-empty{grid-column:1/-1;padding:40px;border:1px dashed rgba(16,6,92,.2);border-radius:18px;text-align:center;color:var(--muted);background:rgba(255,255,255,.55)}
-    .insights-back{display:inline-flex;margin-top:34px;color:#5137d7;font-weight:800}
-    @media(max-width:900px){.insights-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:620px){.insights-hero{padding:125px 0 55px}.insights-main{padding:55px 0 75px}.insights-grid{grid-template-columns:1fr}.insights-heading{display:block}}
+    img{display:block;max-width:100%}
+    button,input{font:inherit}
+    .container{width:min(1180px,92%);margin-inline:auto}
+    .site-header{position:fixed;inset:0 0 auto;z-index:100;padding:16px 0;transition:padding .3s,box-shadow .3s}
+    .site-header:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,4,39,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .site-header.scrolled{padding:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font:800 1.35rem/1.2 Manrope,sans-serif;letter-spacing:-.035em;color:#fff;white-space:nowrap}
+    .brand::first-letter{color:var(--saffron)}
+    .nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,30px)}
+    .nav a{position:relative;color:rgba(255,255,255,.84);font-size:.9rem;font-weight:700;white-space:nowrap}
+    .nav a:not(.nav-cta):after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--saffron);transition:width .25s}
+    .nav a:not(.nav-cta):hover:after{width:100%}
+    .nav a:hover{color:#fff}
+    .nav .nav-cta{padding:11px 18px;border-radius:99px;background:var(--saffron);color:var(--ink);font-weight:800}
+    .menu-toggle{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+    .menu-toggle span{width:20px;height:2px;background:#fff}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--violet);font:800 .72rem Manrope,sans-serif;letter-spacing:.19em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:26px;height:2px;background:var(--grad)}
+    .insights-hero{position:relative;isolation:isolate;overflow:hidden;padding:158px 0 82px;color:#fff;background:radial-gradient(700px 420px at 85% 5%,rgba(91,61,245,.45),transparent 68%),radial-gradient(500px 360px at 0% 100%,rgba(255,107,87,.16),transparent 70%),var(--ink)}
+    .insights-hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,transparent,#000)}
+    .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
+    .insights-hero .eyebrow{color:var(--saffron);margin-bottom:22px}
+    .insights-hero h1{font:800 clamp(2.8rem,6vw,5.2rem)/1.02 Manrope,sans-serif;letter-spacing:-.055em;max-width:760px;margin-bottom:22px}
+    .insights-hero h1 em{font:600 italic clamp(3rem,6.3vw,5.4rem)/1 'Playfair Display',serif;color:var(--saffron)}
+    .hero-copy{max-width:680px;color:rgba(255,255,255,.76);font-size:1.08rem}
+    .hero-note{justify-self:end;max-width:310px;padding:22px 24px;border:1px solid rgba(255,255,255,.18);border-radius:20px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px)}
+    .hero-note strong{display:block;color:var(--saffron);font:800 .75rem Manrope,sans-serif;letter-spacing:.14em;margin-bottom:8px}
+    .hero-note p{font-size:.9rem;color:rgba(255,255,255,.76)}
+    .hero-stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px}
+    .hero-stats span{color:rgba(255,255,255,.68);font-size:.82rem}
+    .hero-stats b{display:block;color:#fff;font:800 1.25rem Manrope,sans-serif}
+    .insights-main{padding:74px 0 104px}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:28px}
+    .section-heading h2{font:800 clamp(1.9rem,3.4vw,2.65rem)/1.1 Manrope,sans-serif;letter-spacing:-.04em;color:var(--ink);margin-top:12px}
+    .section-heading p{color:var(--muted);max-width:530px;margin-top:10px}
+    .article-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:28px 0 30px}
+    .search-wrap{position:relative;flex:1 1 260px}
+    .search-wrap input{width:100%;height:50px;padding:0 18px 0 46px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--text);outline:none}
+    .search-wrap input:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(91,61,245,.1)}
+    .search-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem}
+    .sort-select{height:50px;padding:0 38px 0 15px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--text);font-weight:700}
+    .category-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+    .category-tabs button{border:1px solid var(--line);background:#fff;color:var(--muted);padding:9px 15px;border-radius:99px;font-size:.82rem;font-weight:800;cursor:pointer;transition:.2s}
+    .category-tabs button:hover,.category-tabs button.active{background:var(--indigo);border-color:var(--indigo);color:#fff}
+    .results-line{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.82rem;margin-bottom:18px}
+    .article-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:26px;align-items:stretch}
+    .featured-card,.article-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 16px 45px -34px rgba(16,6,92,.45);transition:transform .28s,box-shadow .28s}
+    .featured-card:hover,.article-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .featured-card{display:grid;grid-template-columns:1.05fr .95fr;min-height:350px}
+    .card-image{display:block;position:relative;overflow:hidden;background:#e9e4f8;min-height:210px}
+    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .featured-card:hover .card-image img,.article-card:hover .card-image img{transform:scale(1.045)}
+    .featured-card .card-image{min-height:350px}
+    .featured-copy{padding:clamp(22px,3vw,38px);display:flex;flex-direction:column;align-items:flex-start}
+    .featured-label{display:inline-flex;align-items:center;gap:7px;color:#4e35cf;background:var(--mist);padding:6px 11px;border-radius:99px;font:800 .68rem Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:17px}
+    .article-meta{display:flex;gap:9px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.75rem;font-weight:700;margin-bottom:13px}
+    .article-meta .category{color:#4e35cf}
+    .article-meta .dot{width:3px;height:3px;border-radius:50%;background:#aaa}
+    .featured-copy h3{font:800 clamp(1.35rem,2.2vw,1.9rem)/1.22 Manrope,sans-serif;letter-spacing:-.035em;color:var(--ink);margin-bottom:13px}
+    .featured-copy>p{font-size:.92rem;color:var(--muted);margin-bottom:22px}
+    .read-link{margin-top:auto;display:inline-flex;align-items:center;gap:9px;color:#5137d7;font-weight:800;font-size:.9rem}
+    .read-link span{transition:transform .2s}
+    .read-link:hover span{transform:translateX(5px)}
+    .side-stack{display:grid;gap:16px}
+    .mini-feature{display:flex;gap:16px;align-items:center;padding:18px;background:#fff;border:1px solid var(--line);border-radius:18px}
+    .mini-feature .mini-mark{flex:0 0 42px;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--mist);color:var(--violet);font-size:1.15rem}
+    .mini-feature b{display:block;font:800 .86rem Manrope,sans-serif;color:var(--ink);margin-bottom:3px}
+    .mini-feature p{font-size:.78rem;color:var(--muted)}
+    .article-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .article-card{display:flex;flex-direction:column;min-width:0}
+    .article-card .card-image{aspect-ratio:16/9;min-height:0}
+    .article-card .card-copy{padding:21px;display:flex;flex:1;flex-direction:column;align-items:flex-start}
+    .article-card h3{font:800 1.08rem/1.3 Manrope,sans-serif;letter-spacing:-.025em;color:var(--ink);margin-bottom:10px}
+    .article-card p{font-size:.86rem;color:var(--muted);margin-bottom:18px}
+    .article-card .read-link{margin-top:auto}
+    .empty-state{grid-column:1/-1;text-align:center;padding:54px 24px;border:1px dashed rgba(16,6,92,.2);border-radius:22px;background:rgba(255,255,255,.65);color:var(--muted)}
+    .empty-state b{display:block;font:800 1.2rem Manrope,sans-serif;color:var(--ink);margin-bottom:7px}
+    .back-home{display:inline-flex;margin-top:48px;color:#5137d7;font-weight:800}
+    footer{background:var(--ink);color:#fff;padding:60px 0 22px}
+    .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:38px}
+    .footer-logo{height:58px;width:auto;max-width:230px;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:14px}
+    .footer-top p{color:rgba(255,255,255,.58);font-size:.9rem}
+    .footer-top h4{font:800 .75rem Manrope,sans-serif;letter-spacing:.16em;color:var(--saffron);margin-bottom:17px}
+    .footer-top ul{list-style:none;display:grid;gap:10px}
+    .footer-top li a,.footer-bottom a{color:rgba(255,255,255,.72);font-size:.88rem}
+    .footer-top a:hover,.footer-bottom a:hover{color:var(--saffron)}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.13);padding-top:20px;color:rgba(255,255,255,.55);font-size:.8rem}
+    .footer-bottom nav{display:flex;gap:20px;flex-wrap:wrap}
+    .whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:90;display:flex;align-items:center;gap:9px;padding:12px 17px;border-radius:99px;background:#20c66b;color:#fff;font-weight:800;font-size:.85rem;box-shadow:0 12px 28px rgba(0,0,0,.2)}
+    .wa-icon{font-size:1.2rem}
+    @media(max-width:980px){.nav{gap:13px}.nav a{font-size:.82rem}.hero-inner{grid-template-columns:1fr .7fr;gap:25px}.article-layout{grid-template-columns:1fr}.side-stack{grid-template-columns:repeat(3,1fr)}.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){html{scroll-padding-top:76px}.site-header{padding:12px 0}.menu-toggle{display:flex}.nav{display:none;position:absolute;top:100%;left:4%;right:4%;padding:18px;background:#10065c;border:1px solid rgba(255,255,255,.14);border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.3);align-items:stretch;gap:0}.nav.open{display:flex;flex-direction:column}.nav a{padding:12px 8px;font-size:.92rem}.nav a:not(.nav-cta):after{display:none}.nav .nav-cta{text-align:center;margin-top:8px}.insights-hero{padding:125px 0 58px}.hero-inner{grid-template-columns:1fr}.hero-note{justify-self:start;max-width:480px}.hero-stats{gap:20px}.insights-main{padding:54px 0 76px}.section-heading{display:block}.featured-card{grid-template-columns:1fr}.featured-card .card-image{min-height:220px;aspect-ratio:16/9}.side-stack{grid-template-columns:1fr}.article-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:30px}.footer-top>div:first-child{grid-column:1/-1}}
+    @media(max-width:440px){.brand{font-size:1.15rem}.hero-stats{gap:14px}.hero-stats b{font-size:1.1rem}.article-tools{align-items:stretch}.sort-select{width:100%}.footer-top{grid-template-columns:1fr}.footer-top>div:first-child{grid-column:auto}.whatsapp-float{right:14px;bottom:14px;padding:11px 14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Quorista Insights","url":"https://quoristaoverseas.in/insights/","description":"Study abroad, visa updates, destination research and international travel articles from Quorista Overseas."}
@@ -59,46 +128,46 @@
 <body>
   <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a class="brand company-name" href="../index.html" aria-label="Quorista Overseas home">Quorista Overseas</a>
+      <a class="brand" href="../index.html" aria-label="Quorista Overseas home">Quorista Overseas</a>
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Main navigation">
-        <a href="../index.html#destinations">Destinations</a>
-        <a href="../index.html#study">Study Abroad</a>
-        <a href="../index.html#universities">Universities</a>
-        <a href="../index.html#travel">Tourism</a>
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#faq">FAQs</a>
-        <a href="https://account.quoristaoverseas.in/" class="nav-cta">Sign up / Log in <span>→</span></a>
+        <a href="../index.html#destinations">Destinations</a><a href="../index.html#study">Study Abroad</a><a href="../index.html#universities">Universities</a><a href="../index.html#travel">Tourism</a><a href="../index.html#services">Services</a><a href="../index.html#faq">FAQs</a><a href="https://account.quoristaoverseas.in/" class="nav-cta">Sign up / Log in <span>→</span></a>
       </nav>
     </div>
   </header>
   <main>
     <section class="insights-hero">
-      <div class="container">
-        <p class="eyebrow">QUORISTA OVERSEAS PRESENTS</p>
-        <h1>Quorista <em>Insights.</em></h1>
-        <p>Practical guides, thoughtful research and important updates to help students and travellers make informed decisions beyond borders.</p>
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">QUORISTA OVERSEAS • KNOWLEDGE & PERSPECTIVE</p>
+          <h1>Ideas that help you move <em>beyond borders.</em></h1>
+          <p class="hero-copy">Explore practical guides, destination research and important updates for more informed study, travel and immigration decisions.</p>
+          <div class="hero-stats"><span><b id="articleCount">—</b>Articles & guides</span><span><b>Study • Travel</b>Two pathways</span><span><b>India-focused</b>Practical context</span></div>
+        </div>
+        <aside class="hero-note"><strong>THE QUORISTA EDITORIAL PROMISE</strong><p>Clear explanations, useful research and careful distinctions between verified requirements, changing rules and personal decisions. Always check official sources before acting.</p></aside>
       </div>
     </section>
     <section class="insights-main">
       <div class="container">
-        <div class="insights-heading">
-          <div><p class="eyebrow">THE LATEST FROM QUORISTA</p><h2>Explore all articles</h2><p>Study abroad • Visa & immigration • Destinations • International travel</p></div>
+        <div class="section-heading">
+          <div><p class="eyebrow">THE QUORISTA READING ROOM</p><h2>Explore our insights</h2><p>Browse articles by topic or search for a question, destination or opportunity.</p></div>
         </div>
-        <div class="insights-grid" id="allInsights" aria-live="polite">
-          <article class="insight-card">
-            <a class="insight-card-image" href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/"><img src="../assets/editorial/students.jpg" alt="Students on an international university campus" loading="lazy"></a>
-            <div class="insight-card-content"><div class="insight-meta"><span class="insight-category">Study Abroad</span><time datetime="2026-11-25">25 November 2026</time><span>8 min read</span></div><h3><a href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/">Study Abroad in 2027: How Indian Students Can Choose Beyond the Big Four</a></h3><p>Planning to study abroad in 2027? Learn how Indian students can compare destinations beyond the traditional Big Four using course fit, total costs, admission eligibility, visa rules and student experience.</p><a class="insight-read" href="insights/study-abroad-2027-indian-students-beyond-traditional-destinations/">Read article <span>→</span></a></div>
-          </article>
+        <div class="article-tools">
+          <label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="articleSearch" type="search" placeholder="Search articles, destinations or topics…" aria-label="Search articles"></label>
+          <select class="sort-select" id="articleSort" aria-label="Sort articles"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="az">Title A–Z</option></select>
         </div>
-        <a class="insights-back" href="../index.html">← Back to Quorista Overseas</a>
+        <div class="category-tabs" id="categoryTabs" aria-label="Filter by category"><button class="active" type="button" data-category="all">All topics</button></div>
+        <div class="results-line"><span id="resultsCount" aria-live="polite">Loading articles…</span><span>Updated as new articles are published</span></div>
+        <div id="featuredArea" class="article-layout" aria-live="polite"></div>
+        <div id="articleGrid" class="article-grid" aria-live="polite" style="margin-top:22px"></div>
+        <a class="back-home" href="../index.html">← Back to Quorista Overseas</a>
       </div>
     </section>
   </main>
   <footer>
     <div class="container">
       <div class="footer-top">
-        <div><a class="footer-logo-link" href="../index.html" aria-label="Quorista Overseas home"><img class="footer-logo" src="../assets/quorista-logo.png" alt="Quorista Overseas logo" loading="lazy"></a><p>Your Journey. Your Future. Beyond Borders.</p></div>
+        <div><a href="../index.html" aria-label="Quorista Overseas home"><img class="footer-logo" src="../assets/quorista-logo.png" alt="Quorista Overseas logo" loading="lazy"></a><p>Your Journey. Your Future. Beyond Borders.</p></div>
         <div><h4>EXPLORE</h4><ul><li><a href="../index.html#destinations">Destinations</a></li><li><a href="../index.html#study">Study Abroad</a></li><li><a href="../index.html#travel">Tourism</a></li><li><a href="../index.html#services">Services</a></li></ul></div>
         <div><h4>CONNECT</h4><ul><li><a href="https://wa.me/916395672828" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:quoristaoverseas@gmail.com">Email</a></li><li><a href="https://instagram.com/quoristaoverseas" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
@@ -108,30 +177,22 @@
   <a class="whatsapp-float" href="https://wa.me/916395672828" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span class="wa-icon">◔</span><span>WhatsApp</span></a>
   <script>
   (() => {
-    const nav=document.querySelector('.nav'), menu=document.querySelector('.menu-toggle');
-    if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));}
-    const header=document.querySelector('.site-header');const onScroll=()=>header&&header.classList.toggle('scrolled',window.scrollY>40);window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-    const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
-    const grid=document.getElementById('allInsights');
-    fetch('articles.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.json();}).then(items=>{
-      if(!Array.isArray(items)||!items.length)return;
-      grid.replaceChildren();
-      items.sort((a,b)=>(b.datePublished||'').localeCompare(a.datePublished||'')).forEach(item=>{
-        const card=document.createElement('article');card.className='insight-card';
-        const imageLink=document.createElement('a');imageLink.className='insight-card-image';imageLink.href=item.url;
-        const image=document.createElement('img');image.src=item.image;image.alt=item.imageAlt||item.title;image.loading='lazy';imageLink.append(image);
-        const content=document.createElement('div');content.className='insight-card-content';
-        const meta=document.createElement('div');meta.className='insight-meta';
-        const category=document.createElement('span');category.className='insight-category';category.textContent=item.category||'Insights';
-        const date=document.createElement('time');date.dateTime=item.datePublished||'';date.textContent=item.datePublished?new Date(item.datePublished+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'';
-        const read=document.createElement('span');read.textContent=item.readTime||'';
-        meta.append(category,date,read);
-        const h3=document.createElement('h3'),title=document.createElement('a');title.href=item.url;title.textContent=item.title;h3.append(title);
-        const desc=document.createElement('p');desc.textContent=item.description||'';
-        const link=document.createElement('a');link.className='insight-read';link.href=item.url;link.textContent='Read article →';
-        content.append(meta,h3,desc,link);card.append(imageLink,content);grid.append(card);
-      });
-    }).catch(()=>{});
+    const nav=document.querySelector('.nav'),menu=document.querySelector('.menu-toggle'),header=document.querySelector('.site-header');
+    if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation');});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));}
+    const onScroll=()=>header&&header.classList.toggle('scrolled',window.scrollY>30);window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const search=document.getElementById('articleSearch'),sort=document.getElementById('articleSort'),tabs=document.getElementById('categoryTabs'),featured=document.getElementById('featuredArea'),grid=document.getElementById('articleGrid'),count=document.getElementById('resultsCount'),articleCount=document.getElementById('articleCount');
+    let articles=[],activeCategory='all';
+    const formatDate=value=>{if(!value)return '';const d=new Date(value+'T00:00:00');return Number.isNaN(d.getTime())?'':d.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});};
+    const makeMeta=item=>{const el=document.createElement('div');el.className='article-meta';const category=document.createElement('span');category.className='category';category.textContent=item.category||'Insights';el.append(category);if(item.datePublished){const dot=document.createElement('span');dot.className='dot';const date=document.createElement('time');date.dateTime=item.datePublished;date.textContent=formatDate(item.datePublished);el.append(dot,date);}if(item.readTime){const dot=document.createElement('span');dot.className='dot';const read=document.createElement('span');read.textContent=item.readTime;el.append(dot,read);}return el;};
+    const makeImage=item=>{const a=document.createElement('a');a.className='card-image';a.href=item.url;const img=document.createElement('img');img.src=item.image||'../assets/editorial/students.jpg';img.alt=item.imageAlt||item.title;img.loading='lazy';img.onerror=()=>{img.src='../assets/editorial/students.jpg';img.onerror=null;};a.append(img);return a;};
+    const makeFeatured=item=>{const card=document.createElement('article');card.className='featured-card';card.append(makeImage(item));const copy=document.createElement('div');copy.className='featured-copy';const label=document.createElement('span');label.className='featured-label';label.textContent='✦ Editor’s pick';copy.append(label,makeMeta(item));const h=document.createElement('h3'),link=document.createElement('a');link.href=item.url;link.textContent=item.title;h.append(link);const desc=document.createElement('p');desc.textContent=item.description||'';const read=document.createElement('a');read.className='read-link';read.href=item.url;read.append(document.createTextNode('Read the article '));const arrow=document.createElement('span');arrow.textContent='→';read.append(arrow);copy.append(h,desc,read);card.append(copy);return card;};
+    const makeCard=item=>{const card=document.createElement('article');card.className='article-card';card.append(makeImage(item));const copy=document.createElement('div');copy.className='card-copy';copy.append(makeMeta(item));const h=document.createElement('h3'),link=document.createElement('a');link.href=item.url;link.textContent=item.title;h.append(link);const desc=document.createElement('p');desc.textContent=item.description||'';const read=document.createElement('a');read.className='read-link';read.href=item.url;read.textContent='Read article →';copy.append(h,desc,read);card.append(copy);return card;};
+    const empty=message=>{const el=document.createElement('div');el.className='empty-state';const b=document.createElement('b');b.textContent=message;const p=document.createElement('p');p.textContent='Try another search or choose a different topic.';el.append(b,p);return el;};
+    const render=()=>{let list=articles.filter(a=>(activeCategory==='all'||(a.category||'Insights')===activeCategory)&&[a.title,a.description,a.category].join(' ').toLowerCase().includes(search.value.trim().toLowerCase()));const mode=sort.value;list.sort((a,b)=>mode==='az'?a.title.localeCompare(b.title):mode==='oldest'?(a.datePublished||'').localeCompare(b.datePublished||''):(b.datePublished||'').localeCompare(a.datePublished||''));count.textContent=list.length+' '+(list.length===1?'article':'articles')+' found';featured.replaceChildren();grid.replaceChildren();if(!list.length){featured.append(empty('No articles match your search'));return;}featured.append(makeFeatured(list[0]));list.slice(1).forEach(item=>grid.append(makeCard(item)));};
+    const buildTabs=()=>{const categories=[...new Set(articles.map(a=>a.category||'Insights'))].sort();tabs.replaceChildren();const all=document.createElement('button');all.type='button';all.dataset.category='all';all.className='active';all.textContent='All topics';tabs.append(all);categories.forEach(category=>{const b=document.createElement('button');b.type='button';b.dataset.category=category;b.textContent=category;tabs.append(b);});tabs.addEventListener('click',e=>{const b=e.target.closest('button[data-category]');if(!b)return;activeCategory=b.dataset.category;tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render();});};
+    search.addEventListener('input',render);sort.addEventListener('change',render);
+    fetch('articles.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.json();}).then(data=>{if(!Array.isArray(data))throw new Error('Invalid article feed');articles=data;articleCount.textContent=String(articles.length);buildTabs();render();}).catch(()=>{articleCount.textContent='—';count.textContent='Articles are temporarily unavailable';featured.replaceChildren(empty('We’re refreshing the reading room'));});
   })();
   </script>
 </body>
