@@ -13,11 +13,12 @@
   <meta property="og:title" content="Study Abroad in 2027: How Indian Students Can Choose Beyond the Big Four">
   <meta property="og:description" content="A practical framework for Indian students comparing international study destinations in a changing education landscape.">
   <meta property="og:url" content="https://quoristaoverseas.in/insights/study-abroad-2027-indian-students-beyond-traditional-destinations/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=85">
+  <meta property="og:image" content="https://quoristaoverseas.in/assets/editorial/students.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Study Abroad in 2027: How Indian Students Can Choose Beyond the Big Four">
   <meta name="twitter:description" content="Compare course fit, costs, eligibility, visa rules and student experience before choosing a study destination.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=85">
+  <meta name="twitter:image" content="https://quoristaoverseas.in/assets/editorial/students.jpg">
+  <link rel="stylesheet" href="../../assets/css/home-experience.css?v=20261118">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -31,15 +32,21 @@
     .container{width:min(1120px,92%);margin:auto}
     .progress{position:fixed;inset:0 0 auto;height:3px;z-index:300;background:transparent}
     .progress span{display:block;height:100%;width:0;background:var(--grad)}
-    .site-header{position:sticky;top:0;z-index:200;background:rgba(7,4,39,.96);backdrop-filter:blur(14px);padding:13px 0;box-shadow:0 8px 28px rgba(7,4,39,.12)}
-    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{font:800 1.24rem/1.2 Manrope,sans-serif;letter-spacing:-.04em;color:#fff;white-space:nowrap}
-    .brand span{color:var(--saffron)}
-    .nav{display:flex;align-items:center;gap:24px}
-    .nav a{font-size:.88rem;font-weight:700;color:rgba(255,255,255,.82);transition:.2s}
-    .nav a:hover,.nav a:focus-visible{color:var(--saffron)}
-    .nav .nav-cta{background:var(--saffron);color:var(--ink);padding:10px 17px;border-radius:99px}
-    .menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:10px;width:42px;height:40px;font-size:1.25rem}
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:150;padding:16px 0;transition:.35s}
+    .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,4,39,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:1;transition:opacity .35s}
+    .site-header.scrolled{padding:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand.company-name{font:800 1.35rem/1.2 "Manrope",sans-serif;letter-spacing:-.035em;color:#fff;white-space:nowrap;display:inline-flex;align-items:center}
+    .brand.company-name::first-letter{color:var(--saffron)}
+    .nav{display:flex;align-items:center;gap:30px}
+    .nav a{color:rgba(255,255,255,.82);font-weight:600;font-size:.92rem;position:relative}
+    .nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--saffron);transition:.3s}
+    .nav a:not(.nav-cta):hover::after{width:100%}
+    .nav a:hover{color:#fff}
+    .nav-cta{background:var(--saffron);color:var(--ink)!important;padding:11px 20px;border-radius:999px;font-weight:800!important;transition:.3s}
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(255,176,32,.6)}
+    .menu-toggle{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+    .menu-toggle span{width:24px;height:2px;background:#fff;transition:.3s}
     .preview-note{background:#fff3d8;color:#624300;text-align:center;padding:8px 14px;font-size:.78rem;font-weight:800;letter-spacing:.04em}
     .crumbs{padding:24px 0 0;color:var(--muted);font-size:.82rem}
     .crumbs a{color:var(--violet);font-weight:700}
@@ -100,18 +107,23 @@
     .cta-band p{color:rgba(255,255,255,.76);margin-bottom:18px}
     .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:99px;background:var(--saffron);color:var(--ink);font-weight:800;font-size:.9rem}
     .disclaimer{margin-top:20px;color:#6d6883;font-size:.8rem;line-height:1.65}
-    .footer{background:#070427;color:#fff;padding:48px 0 25px}
-    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;padding-bottom:28px}
-    .footer h3{font-size:1.3rem;margin-bottom:12px}
-    .footer h4{font:800 .75rem Manrope,sans-serif;letter-spacing:.14em;color:var(--saffron);margin-bottom:14px}
-    .footer p,.footer a{color:rgba(255,255,255,.7);font-size:.88rem}
-    .footer li{list-style:none;margin:8px 0}
-    .footer a:hover{color:#fff}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:rgba(255,255,255,.6);font-size:.78rem}
-    .footer-bottom nav{display:flex;gap:18px;flex-wrap:wrap}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr  .85fr;gap:28px}.article-shell{grid-template-columns:1fr;gap:25px}.toc{position:static;order:-1}.toc-links{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}}
-    @media(max-width:720px){.site-header{padding:11px 0}.menu-toggle{display:block}.nav{display:none;position:absolute;top:100%;left:0;right:0;background:#070427;padding:16px 4% 22px;align-items:stretch;flex-direction:column;gap:0}.nav.open{display:flex}.nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}.nav .nav-cta{margin-top:12px;text-align:center;border:0;padding:12px}.hero{padding:28px 0 36px}.hero-grid{grid-template-columns:1fr}.hero-image,.hero-image img{min-height:250px;max-height:340px}.article-shell{padding-bottom:65px}.article h2{margin-top:42px}.checklist{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
-    @media(max-width:440px){h1{font-size:2.35rem}.stat-grid{grid-template-columns:1fr}.toc-links{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}.meta{gap:8px 14px}}
+    footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-top img{height:48px;background:#fff;padding:5px 10px;border-radius:12px;margin-bottom:16px}
+    .footer-top img.footer-logo{height:80px;max-width:300px;background:transparent!important;padding:0!important;border-radius:0!important;filter:brightness(0) invert(1)}
+    .footer-top h4{font:800 .72rem "Manrope";letter-spacing:.2em;color:var(--saffron);margin-bottom:16px}
+    .footer-top ul{list-style:none;display:grid;gap:10px}
+    .footer-top a{transition:.25s}
+    .footer-top a:hover{color:#fff;padding-left:4px}
+    .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:.84rem}
+    .footer-bottom nav{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-bottom nav a:hover{color:var(--saffron)}
+    .whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:120;background:#25d366;color:#fff;padding:13px 20px;border-radius:999px;font-weight:800;display:flex;align-items:center;gap:8px;box-shadow:0 14px 30px -8px rgba(37,211,102,.6);transition:.3s}
+    .whatsapp-float:hover{transform:translateY(-4px) scale(1.04)}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr .85fr;gap:28px}.article-shell{grid-template-columns:1fr;gap:25px}.toc{position:static;order:-1}.toc-links{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}}
+    @media(max-width:820px){.menu-toggle{display:flex}.nav{position:fixed;inset:70px 4% auto 4%;flex-direction:column;align-items:flex-start;gap:18px;background:rgba(7,4,39,.97);padding:28px;border-radius:22px;transform:translateY(-20px);opacity:0;visibility:hidden;transition:.3s}.nav.open{transform:none;opacity:1;visibility:visible}.footer-top{grid-template-columns:1fr}.footer-bottom nav{gap:16px}}
+    @media(max-width:720px){.hero{padding:28px 0 36px}.hero-grid{grid-template-columns:1fr}.hero-image,.hero-image img{min-height:250px;max-height:340px}.article-shell{padding-bottom:65px}.article h2{margin-top:42px}.checklist{grid-template-columns:1fr}}
+    @media(max-width:440px){h1{font-size:2.35rem}.stat-grid{grid-template-columns:1fr}.toc-links{grid-template-columns:1fr}.meta{gap:8px 14px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
   <script type="application/ld+json">
@@ -120,7 +132,7 @@
     "@type":"Article",
     "headline":"Study Abroad in 2027: How Indian Students Can Choose Beyond the Big Four",
     "description":"A practical framework for Indian students comparing international study destinations in a changing education landscape.",
-    "image":"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=85",
+    "image":"https://quoristaoverseas.in/assets/editorial/students.jpg",
     "datePublished":"2026-11-25",
     "dateModified":"2026-11-25",
     "author":{"@type":"Organization","name":"Quorista Overseas Editorial Team","url":"https://quoristaoverseas.in/"},
@@ -131,10 +143,10 @@
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a class="brand" href="../../index.html" aria-label="Quorista Overseas home">Quorista <span>Overseas</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <a class="brand company-name" href="../../index.html" aria-label="Quorista Overseas home">Quorista Overseas</a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Main navigation">
         <a href="../../index.html#destinations">Destinations</a>
         <a href="../../index.html#study">Study Abroad</a>
@@ -142,7 +154,7 @@
         <a href="../../index.html#travel">Tourism</a>
         <a href="../../index.html#services">Services</a>
         <a href="../../index.html#faq">FAQs</a>
-        <a class="nav-cta" href="https://account.quoristaoverseas.in/">My Quorista →</a>
+        <a href="https://account.quoristaoverseas.in/" class="nav-cta">Sign up / Log in <span>→</span></a>
       </nav>
     </div>
   </header>
@@ -162,7 +174,7 @@
           </div>
         </div>
         <figure class="hero-image">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=85" alt="University graduates celebrating together on campus" fetchpriority="high">
+          <img src="https://quoristaoverseas.in/assets/editorial/students.jpg" alt="University graduates celebrating together on campus" fetchpriority="high">
           <figcaption class="image-label">A MORE INFORMED WAY TO PLAN YOUR GLOBAL EDUCATION</figcaption>
         </figure>
       </div>
@@ -308,16 +320,20 @@
     </div>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="container">
-      <div class="footer-grid">
-        <div><h3>Quorista Overseas</h3><p>Your Journey. Your Future. Beyond Borders.</p></div>
+      <div class="footer-top">
+        <div><a class="footer-logo-link" href="../../index.html" aria-label="Quorista Overseas home"><img class="footer-logo" src="../../assets/quorista-logo.png" alt="Quorista Overseas logo" loading="lazy"></a><p>Your Journey. Your Future. Beyond Borders.</p></div>
         <div><h4>EXPLORE</h4><ul><li><a href="../../index.html#destinations">Destinations</a></li><li><a href="../../index.html#study">Study Abroad</a></li><li><a href="../../index.html#travel">Tourism</a></li><li><a href="../../index.html#services">Services</a></li></ul></div>
-        <div><h4>CONNECT</h4><ul><li><a href="https://wa.me/916395672828" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="mailto:quoristaoverseas@gmail.com">Email</a></li><li><a href="https://instagram.com/quoristaoverseas" target="_blank" rel="noopener noreferrer">Instagram</a></li></ul></div>
+        <div><h4>CONNECT</h4><ul><li><a href="https://wa.me/916395672828" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:quoristaoverseas@gmail.com">Email</a></li><li><a href="https://instagram.com/quoristaoverseas" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© <span id="year"></span> Quorista Overseas</span><nav aria-label="Footer"><a href="../../about.html">About</a><a href="../../careers.html">Careers</a><a href="../../legal.html">Legal &amp; Policies</a><a href="../../terms.html">Terms</a><a href="../../privacy.html">Privacy</a></nav></div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Quorista Overseas</span>
+        <nav aria-label="Footer"><a href="../../about.html">About</a><a href="../../careers.html">Careers</a><a href="../../legal.html">Legal &amp; Policies</a><a href="../../terms.html">Terms</a><a href="../../privacy.html">Privacy</a></nav>
+      </div>
     </div>
   </footer>
+  <a class="whatsapp-float" href="https://wa.me/916395672828" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span class="wa-icon">◔</span><span>WhatsApp</span></a>
   <script>
     (() => {
       const menu = document.querySelector('.menu-toggle');
@@ -327,21 +343,23 @@
           const open = nav.classList.toggle('open');
           menu.setAttribute('aria-expanded', String(open));
           menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-          menu.textContent = open ? '×' : '☰';
         });
         nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
           nav.classList.remove('open');
           menu.setAttribute('aria-expanded', 'false');
-          menu.textContent = '☰';
         }));
       }
+      const header = document.querySelector('.site-header');
+      const updateHeader = () => { if (header) header.classList.toggle('scrolled', window.scrollY > 40); };
+      window.addEventListener('scroll', updateHeader, {passive:true});
+      updateHeader();
       const bar = document.getElementById('progressBar');
-      const update = () => {
+      const updateProgress = () => {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         if (bar) bar.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
       };
-      window.addEventListener('scroll', update, {passive:true});
-      update();
+      window.addEventListener('scroll', updateProgress, {passive:true});
+      updateProgress();
       const year = document.getElementById('year');
       if (year) year.textContent = new Date().getFullYear();
     })();
