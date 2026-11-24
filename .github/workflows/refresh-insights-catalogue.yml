@@ -1,0 +1,112 @@
+name: Refresh Quorista Insights catalogue
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'insights/**/index.html'
+      - '.github/workflows/refresh-insights-catalogue.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-catalogue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build article feed and update sitemap
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from datetime import date
+          import json, re, xml.etree.ElementTree as ET
+
+          ROOT = Path('.')
+          BASE = 'https://quoristaoverseas.in'
+          class MetaParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.meta = {}
+                  self.title = ''
+                  self.in_title = False
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == 'meta':
+                      key = attrs.get('property') or attrs.get('name')
+                      if key and attrs.get('content'):
+                          self.meta[key.lower()] = attrs['content'].strip()
+                  elif tag == 'title':
+                      self.in_title = True
+              def handle_endtag(self, tag):
+                  if tag == 'title':
+                      self.in_title = False
+              def handle_data(self, data):
+                  if self.in_title:
+                      self.title += data
+
+          entries = []
+          for file in sorted((ROOT / 'insights').glob('*/index.html')):
+              html = file.read_text(encoding='utf-8')
+              parser = MetaParser()
+              parser.feed(html)
+              meta = parser.meta
+              canonical = meta.get('og:url') or f"{BASE}/{file.parent.as_posix()}/"
+              url = canonical.replace(BASE + '/', '', 1)
+              if not url.endswith('/'):
+                  url += '/'
+              title = parser.title.strip()
+              if not title or title == 'Quorista Insights':
+                  continue
+              entries.append({
+                  'title': title.replace(' | Quorista Overseas', ''),
+                  'description': meta.get('description', ''),
+                  'shortDescription': meta.get('description', ''),
+                  'url': url,
+                  'image': meta.get('og:image', f'{BASE}/assets/editorial/students.jpg'),
+                  'imageAlt': title.replace(' | Quorista Overseas', ''),
+                  'category': meta.get('article:section', 'Insights'),
+                  'datePublished': meta.get('article:published_time', date.today().isoformat())[:10],
+                  'dateModified': meta.get('article:modified_time', date.today().isoformat())[:10],
+                  'readTime': meta.get('article:read_time', '')
+              })
+          entries.sort(key=lambda item: item['datePublished'], reverse=True)
+          (ROOT / 'insights' / 'articles.json').write_text(json.dumps(entries, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          sitemap_path = ROOT / 'sitemap.xml'
+          tree = ET.parse(sitemap_path)
+          root = tree.getroot()
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          tag = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
+          existing = {node.findtext(tag + 'loc') for node in root.findall('sm:url', ns)}
+          for entry in entries:
+              absolute = BASE + '/' + entry['url'].lstrip('/')
+              if absolute not in existing:
+                  node = ET.SubElement(root, tag + 'url')
+                  ET.SubElement(node, tag + 'loc').text = absolute
+                  ET.SubElement(node, tag + 'lastmod').text = entry['dateModified']
+                  ET.SubElement(node, tag + 'priority').text = '0.75'
+          listing = BASE + '/insights/'
+          if listing not in existing:
+              node = ET.SubElement(root, tag + 'url')
+              ET.SubElement(node, tag + 'loc').text = listing
+              ET.SubElement(node, tag + 'lastmod').text = date.today().isoformat()
+              ET.SubElement(node, tag + 'priority').text = '0.8'
+          ET.indent(tree, space='  ')
+          tree.write(sitemap_path, encoding='utf-8', xml_declaration=True)
+          PY
+      - name: Commit updated catalogue and sitemap
+        run: |
+          if git diff --quiet; then
+            echo "No catalogue changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add insights/articles.json sitemap.xml
+          git commit -m "Automatically refresh Quorista Insights catalogue"
+          git push
