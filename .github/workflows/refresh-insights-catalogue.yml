@@ -77,6 +77,7 @@ jobs:
           entries.sort(key=lambda item: item['datePublished'], reverse=True)
           (ROOT / 'insights' / 'articles.json').write_text(json.dumps(entries, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
+          ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
           sitemap_path = ROOT / 'sitemap.xml'
           tree = ET.parse(sitemap_path)
           root = tree.getroot()
