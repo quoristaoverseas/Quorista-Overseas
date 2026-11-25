@@ -832,7 +832,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px;bord
   });
 
   if (careerTabs.length) {
-    const initiallySelected = careerTabs.find(tab => tab.getAttribute('aria-selected') === 'true') || careerTabs[0];
+    // Honour direct links to the internship panel while preserving the normal
+    // full-time default for visitors who open careers.html without a fragment.
+    const requestedPanel = location.hash.replace(/^#/, '').toLowerCase();
+    const requestedTab = requestedPanel === 'internships' ? 'internship' : requestedPanel;
+    const initiallySelected =
+      careerTabs.find(tab => tab.dataset.tab === requestedTab) ||
+      careerTabs.find(tab => tab.getAttribute('aria-selected') === 'true') ||
+      careerTabs[0];
     activateCareerTab(initiallySelected);
   }
 
